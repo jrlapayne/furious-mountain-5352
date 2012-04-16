@@ -1,0 +1,16 @@
+<div data-role="header">
+  <h1>Topics</h1>
+</div>
+
+<div data-role="content">
+  <ul data-role="listview">
+  <% @topics.each do |note| %>
+    <li>
+    <%= link_to note do %>
+      <h2><%= note.ancestry %></h2>
+      <%= truncate(note.content, :length => 25) %>
+    <% end %>
+    </li>
+  <% end %>
+  </ul>
+</div>
