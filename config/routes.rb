@@ -1,5 +1,15 @@
 Mobile4::Application.routes.draw do
   resources :topics
+  resources :quizzes
+  resources :answers
+  resources :quizactivities
+  
+  resources :reasons do
+    member do
+      get :showquestion
+    end
+  end
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

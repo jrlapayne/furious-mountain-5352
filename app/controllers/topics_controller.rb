@@ -22,4 +22,10 @@ class TopicsController < ApplicationController
       end
     end
   end
+  
+  def show
+    @topic = Topic.find_by_id(params[:id])
+    reasons = Reason.where(topic_id: @topic.id, question_approved: true)
+    @reason = reasons.first
+  end
 end

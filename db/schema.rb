@@ -11,24 +11,49 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120416193359) do
+ActiveRecord::Schema.define(:version => 20120417064618) do
+
+  create_table "answers", :force => true do |t|
+    t.string   "content"
+    t.boolean  "is_correct"
+    t.integer  "reason_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "quizactivities", :force => true do |t|
+    t.integer  "topic_id"
+    t.integer  "user_id"
+    t.integer  "reason_id"
+    t.integer  "next_reason"
+    t.boolean  "is_correct"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "quizzes", :force => true do |t|
+    t.integer  "topic_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "reasons", :force => true do |t|
+    t.integer  "topic_id"
+    t.string   "question"
+    t.boolean  "question_approved"
+    t.string   "title"
+    t.text     "content"
+    t.integer  "score"
+    t.boolean  "is_pro"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
 
   create_table "topics", :force => true do |t|
+    t.string   "title"
     t.text     "description"
-    t.string   "url"
-    t.integer  "score"
-    t.boolean  "is_anon"
-    t.boolean  "ispro"
-    t.integer  "user_id"
-    t.string   "content"
-    t.string   "pro_fieldname"
-    t.string   "con_fieldname"
-    t.integer  "display_count"
-    t.integer  "clicks"
-    t.integer  "ancestry_depth"
-    t.string   "ancestry"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
 end

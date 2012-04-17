@@ -1,0 +1,31 @@
+<div data-role="page" id="one">
+	<div data-role="header" style="white-space: normal; min-height: 1em;
+		padding: 0.4em">
+		<% if @quizactivity.is_correct? %>
+			<p style="margin:0; text-align: center; color: #33cc33; font-size: 1.25em">
+				Correct!
+			</p>
+		<% else %>
+			<p style="margin:0; text-align: center; color: #FF0000; font-size: 1.25em">
+				Wrong!
+			</p>
+		<% end %>
+	</div>
+	<p><%= @reason.title %></p>
+	<div style="height: 1em;"></div>
+		<% if @quizactivity.next_reason < 999999 %>
+			<%= link_to("Next Question", showquestion_reason_path(@quizactivity.next_reason), "data-role" => "button", "data-icon"=>"arrow-r", "data-iconpos"=>"right")%>
+		<% else %>
+			<%= link_to("Finish Quiz!", topics_path, "data-role" => "button", "data-icon"=>"arrow-r", "data-iconpos"=>"right")%>
+		<% end %>	
+		<div style="height: 2em;"></div>	
+		<div><a href="#three" data-role="button", data-icon="info", data-theme="e", data-iconpos="right"> Learn More </a></div>			 
+	</div>
+	<%= render 'layouts/footer'%>
+</div>
+
+<div data-role="page" id="three">
+	<p>
+		<%= @reason.content%>
+	</p>
+</div>
