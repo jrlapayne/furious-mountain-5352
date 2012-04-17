@@ -3,36 +3,65 @@
 		padding: 0.4em">	
 		<p style="margin:0; text-align: center"><%= @reason.question %></p>
 	</div>
-	<div class="ui-grid-b">
+	<div class="ui-grid-b", style="min-height:3em;">
 		<div class="ui-block-a"><%= link_to "Topic", @topic, {"data-role"=>"button", "data-mini"=>"true", "data-icon"=>"arrow-l", "data-theme"=>"b"}%></div>	 
-		<div class="ui-block-b">&nbsp;</div>	
-		<div class="ui-block-c"><a href="#two" data-role="button", data-mini="true", data-icon="info", data-theme="e", data-iconpos="right"> Learn </a></div>	 
+		<div class="ui-block-b"><%= link_to "Home", topics_path, {"data-role"=>"button", "data-mini"=>"true", "data-icon"=>"home", "data-theme"=>"a"}%></div>
+		<div class="ui-block-c"><a href="#learn" data-role="button", data-mini="true", data-icon="info", data-theme="e", data-iconpos="right"> Learn </a></div>	 
 	</div>
 	<% @reason.answers.each do |i| %>
-		<%= form_for @quizactivity do |f| %>
-		  <div class="actions">
-				<%= f.hidden_field :topic_id, value: @topic.id %>
-				<%= f.hidden_field :reason_id, value: @reason.id %>
-			  <% if i.is_correct %>
-					<%= f.hidden_field :is_correct, value: true %>
-				<% else %>
-					<%= f.hidden_field :is_correct, value: false %>
-				<% end %>
-		    <%= f.submit i.content, "data-icon"=>"check"%>
-		  </div>
-		<% end %>
+		<div style="margin:0.75em;">	
+			<% if i.is_correct? %>
+				<a href="#correct" data-role="button", data-icon="check"> <%=i.content%> </a>	
+			<% else %>
+			  <a href="#wrong" data-role="button", data-icon="check"> <%=i.content%> </a>	
+			<% end %>
+		</div>
 	<% end %>
-	<%= render 'layouts/footer'%>
 </div>
 
-<div data-role="page" id="two">
+<div data-role="page" id="learn">
 	<div data-role="header" style="white-space: normal; min-height: 25px;
 		padding: 0.3em">	
 		<p style="margin:0; text-align: center"><%= @reason.question %></p>
 	</div>
-	<div class="ui-grid-a">
-		<div class="ui-block-a"><a href="#one" data-role="button", data-mini="true", data-transition="flip", data-icon="back"> Back to Quiz </a></div>	 
+	<div><a href="#one" data-role="button", data-mini="true", data-transition="flip", data-icon="back", data-theme="e"> Back to Quiz </a></div>	 
+	<p><%= @reason.content %></p>
+</div>
+
+<div data-role="page" id="learn_answered">
+	<div data-role="header" style="white-space: normal; min-height: 25px;
+		padding: 0.3em">	
+		<p style="margin:0; text-align: center"><%= @reason.question %></p>
 	</div>
-	<%= @reason.content %>
-	<%= render 'layouts/footer'%>
+	<div><a href="#" data-role="button", data-mini="true", data-transition="flip", data-icon="back", data-rel="back", data-theme="e"> Back to Quiz </a></div>	 
+	<p><%= @reason.title %></p>
+	<p><%= @reason.content %></p>
+</div>
+
+<div data-role="page" id="correct">
+	<div data-role="header" style="white-space: normal; min-height: 1em;
+		padding: 0.4em">
+		<p style="margin:0; text-align: center; color: #33cc33; font-size: 1.25em">
+			Correct!
+		</p>
+	</div>
+	<p><%= @reason.title %></p>
+	<div style="height: 1em;"></div>
+	<%= link_to("Next", correct_reason_path(@reason), "data-role" => "button", "data-icon"=>"arrow-r", "data-iconpos"=>"right", "data-ajax"=>"false")%>
+	<div style="height: 2em;"></div>	
+	<div><a href="#learn_answered" data-role="button", data-icon="info", data-theme="e", data-iconpos="right"> Learn More </a></div>			 
+</div>
+
+<div data-role="page" id="wrong">
+	<div data-role="header" style="white-space: normal; min-height: 1em;
+		padding: 0.4em">
+		<p style="margin:0; text-align: center; color: #ff0000; font-size: 1.25em">
+			Wrong!
+		</p>
+	</div>
+	<p><%= @reason.title %></p>
+	<div style="height: 1em;"></div>
+	<%= link_to("Next", wrong_reason_path(@reason), "data-role" => "button", "data-icon"=>"arrow-r", "data-iconpos"=>"right", "data-ajax"=>"false")%>
+	<div style="height: 2em;"></div>	
+	<div><a href="#learn_answered" data-role="button", data-icon="info", data-theme="e", data-iconpos="right"> Learn More </a></div>			 
 </div>

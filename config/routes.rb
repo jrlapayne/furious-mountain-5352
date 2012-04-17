@@ -6,7 +6,7 @@ Mobile4::Application.routes.draw do
   
   resources :reasons do
     member do
-      get :showquestion
+      get :showquestion, :correct, :wrong
     end
   end
   
