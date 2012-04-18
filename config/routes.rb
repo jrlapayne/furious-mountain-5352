@@ -1,5 +1,4 @@
 Mobile4::Application.routes.draw do
-  resources :ts
   resources :quizzes
   resources :answers
   resources :quizactivities
@@ -7,6 +6,11 @@ Mobile4::Application.routes.draw do
   resources :reasons do
     member do
       get :showquestion, :correct, :wrong
+    end
+  end
+  resources :ts do
+    member do
+      get :description
     end
   end
   

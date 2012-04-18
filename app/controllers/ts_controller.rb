@@ -41,4 +41,8 @@ class TsController < ApplicationController
       @cons.reverse!
     end
   end
+  
+  def description
+    @topic = T.find_by_id(params[:id])
+  end
 end

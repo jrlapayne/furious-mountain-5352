@@ -9,17 +9,8 @@
 
 	<div data-role="header" data-theme="c" style="white-space: normal; min-height: 1em;
 		padding: 0.5em 0.3em 0.3em 0.3em">	
-		<p style="margin:0; text-align: center; line-height:135%;"><%= @topic.title %></p>
-	</div>
-	
-	<div class="ui-grid-b">
-		<div class="ui-block-a"></div>
-		<div class="ui-block-b">
-			<div data-role="collapsible" data-mini="true" style="margin: 0.3em -0.3em 0 -0.3em;">
-			   <h2>Description</h2>
-			   <p style="margin: -0.5em -7.9em -0.5em -7.9em; font-size: 0.85em;"><%= @topic.description %></p>
-			</div>
-		</div>
+		<p style="margin: 0 1.7em 0 -0.2em; text-align: center; line-height:135%;"><%= @topic.title %></p>
+		<%= link_to "Topic Description", description_t_path(@topic), {"data-icon"=>"info", "data-iconpos"=>"notext", "data-theme"=>"d", "data-transition"=>"slidedown", "class"=>"ui-btn-right"}%>
 	</div>
 	
 	<div class="ui-grid-a">
@@ -30,7 +21,7 @@
 	<div data-role="content">
 		<ul data-role="listview">
 			<% @pros.each do |i|%>
-				<li><a href="index.html" style="white-space: normal; margin: 0 -0.9em 0 -0.5em; font-size: 0.9em;"><%= i.title %> <span class="ui-li-count"><%=i.score%></span></a></li>
+				<li><a href="index.html" style="white-space: normal; margin: 0 -0.9em 0 -0.8em; font-size: 0.9em;"><%= i.title %> <span class="ui-li-count"><%=i.score%></span></a></li>
 			<% end %>
 		</ul>
 	</div>
@@ -47,17 +38,8 @@
 
 	<div data-role="header" data-theme="c" style="white-space: normal; min-height: 1em;
 		padding: 0.5em 0.3em 0.3em 0.3em">	
-		<p style="margin:0; text-align: center; line-height:135%;"><%= @topic.title %></p>
-	</div>
-	
-	<div class="ui-grid-b">
-		<div class="ui-block-a"></div>
-		<div class="ui-block-b">
-			<div data-role="collapsible" data-mini="true" style="margin: 0.3em -0.3em 0 -0.3em;">
-			   <h2>Description</h2>
-			   <p style="margin: -0.5em -7.9em -0.5em -7.9em; font-size: 0.85em;"><%= @topic.description %></p>
-			</div>
-		</div>
+		<p style="margin: 0 1.7em 0 -0.2em; text-align: center; line-height:135%;"><%= @topic.title %></p>
+		<a href="index.html" data-icon="info" data-iconpos="notext" data-theme="d" class="ui-btn-right">Topic Description</a>
 	</div>
 	
 	<div class="ui-grid-a">
@@ -67,8 +49,9 @@
 
 	<div data-role="content">
 		<ul data-role="listview">
-			<li><a href="index.html">Inbox <span class="ui-li-count">12</span></a></li>
-			<li><a href="index.html">Outbox <span class="ui-li-count">0</span></a></li>
+			<% @cons.each do |i|%>
+				<li><a href="index.html" style="white-space: normal; margin: 0 -0.9em 0 -0.8em; font-size: 0.9em;"><%= i.title %> <span class="ui-li-count"><%=i.score%></span></a></li>
+			<% end %>
 		</ul>
 	</div>
 </div>
