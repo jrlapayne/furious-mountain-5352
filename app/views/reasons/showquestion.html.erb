@@ -50,7 +50,7 @@
 	</div>
 	<p><%= @reason.title %></p>
 	<div style="height: 1em;"></div>
-	<%= link_to("Next", correct_reason_path(@reason), "data-role" => "button", "data-icon"=>"arrow-r", "data-iconpos"=>"right", "data-ajax"=>"false")%>
+	<%= link_to("Next", correct_reason_path(@reason), "data-role" => "button", "data-icon"=>"arrow-r", "data-iconpos"=>"right")%>
 	<div style="height: 2em;"></div>	
 	<div><a href="#learn_answered" data-role="button", data-icon="info", data-theme="e", data-iconpos="right"> Learn More </a></div>
 	<%= render 'layouts/footer'%>			 
@@ -65,7 +65,7 @@
 	</div>
 	<p><%= @reason.title %></p>
 	<div style="height: 1em;"></div>
-	<%= link_to("Next", wrong_reason_path(@reason), "data-role" => "button", "data-icon"=>"arrow-r", "data-iconpos"=>"right", "data-ajax"=>"false")%>
+	<%= link_to("Next", wrong_reason_path(@reason), "data-role" => "button", "data-icon"=>"arrow-r", "data-iconpos"=>"right")%>
 	<div style="height: 2em;"></div>	
 	<div><a href="#learn_answered" data-role="button", data-icon="info", data-theme="e", data-iconpos="right"> Learn More </a></div>
 	<%= render 'layouts/footer'%>			 
