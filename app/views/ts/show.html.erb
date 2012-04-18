@@ -1,18 +1,24 @@
-<div data-role="navbar" data-iconpos="left">
-	<ul>
-		<li style="font-size:50%;"><%= link_to "Topic", @topic, {"data-role"=>"button", "data-mini"=>"true", "data-icon"=>"arrow-u", "data-theme"=>"b"}%></li>
-		<li><%= link_to "Home", ts_path, {"data-role"=>"button", "data-mini"=>"true", "data-icon"=>"home", "data-theme"=>"a"}%></li>
-		<li><%= link_to "Topic", @topic, {"data-role"=>"button", "data-mini"=>"true", "data-icon"=>"arrow-u", "data-theme"=>"b"}%></li>
-	</ul>
+<div data-role="page" id="one">
+	<div data-role="navbar" data-iconpos="left" style="background-color:#303030">
+		<ul>
+			<li><%= link_to "Quiz!", @topic, {"data-role"=>"button", "data-mini"=>"true", "data-icon"=>"check", "data-theme"=>"a"}%></li>
+			<li><%= link_to "Home", ts_path, {"data-role"=>"button", "data-mini"=>"true", "data-icon"=>"home", "data-theme"=>"a"}%></li>
+			<li><%= link_to "Edit", @topic, {"data-role"=>"button", "data-mini"=>"true", "data-icon"=>"gear", "data-theme"=>"a"}%></li>
+		</ul>
+	</div>
+
+	<div data-role="header" data-theme="c" style="white-space: normal; min-height: 1em;
+		padding: 0.5em 0.3em 0.3em 0.3em">	
+		<p style="margin:0; text-align: center; line-height:135%;"><%= @topic.title %></p>
+	</div>
+	
+	<div class="ui-grid-b">
+	<div class="ui-block-a"></div>
+	<div data-role="collapsible" data-mini="true" class="ui-block-b">
+	   <h3>Description</h3>
+	   <p style="margin: 0 -7.6em 0 -7.6em; border: 1px solid; font-size: 0.95em;"><%= @topic.description %></p>
+	</div>
+	</div>
+
+	<%= link_to 'Quiz', showquestion_reason_path(@reason), {"data-ajax"=>"false","data-role"=>"button", "data-mini"=>"true", "data-icon"=>"check", "data-theme"=>"b"} %> 
 </div>
-
-<div data-role="header" style="white-space: normal; min-height: 1em;
-	padding: 0.5em 0.3em 0.3em 0.3em">	
-	<p style="margin:0; text-align: center; line-height:135%;"><%= @topic.title %></p>
-</div>
-
-<p>
-	<%= @topic.description %>
-</p>
-
-<%= link_to 'Quiz', showquestion_reason_path(@reason), {"data-ajax"=>"false","data-role"=>"button", "data-mini"=>"true", "data-icon"=>"check", "data-theme"=>"b"} %> 
