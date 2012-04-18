@@ -1,7 +1,7 @@
-<div data-role="page" id="one">
+<div data-role="page" id="pros">
 	<div data-role="navbar" data-iconpos="left" style="background-color:#303030">
 		<ul>
-			<li><%= link_to "Quiz!", @topic, {"data-role"=>"button", "data-mini"=>"true", "data-icon"=>"check", "data-theme"=>"a"}%></li>
+			<li><%= link_to "Quiz!", showquestion_reason_path(@reason), {"data-ajax"=>"false", "data-role"=>"button", "data-mini"=>"true", "data-icon"=>"check", "data-theme"=>"a"}%></li>
 			<li><%= link_to "Home", ts_path, {"data-role"=>"button", "data-mini"=>"true", "data-icon"=>"home", "data-theme"=>"a"}%></li>
 			<li><%= link_to "Edit", @topic, {"data-role"=>"button", "data-mini"=>"true", "data-icon"=>"gear", "data-theme"=>"a"}%></li>
 		</ul>
@@ -13,12 +13,61 @@
 	</div>
 	
 	<div class="ui-grid-b">
-	<div class="ui-block-a"></div>
-	<div data-role="collapsible" data-mini="true" class="ui-block-b" style="margin: 0.3em 0 0 0;">
-	   <h4>Description</h4>
-	   <p style="margin: 0 -7.9em -0.5em -7.9em; font-size: 0.85em;"><%= @topic.description %></p>
+		<div class="ui-block-a"></div>
+		<div class="ui-block-b">
+			<div data-role="collapsible" data-mini="true" style="margin: 0.3em -0.3em 0 -0.3em;">
+			   <h2>Description</h2>
+			   <p style="margin: -0.5em -7.9em -0.5em -7.9em; font-size: 0.85em;"><%= @topic.description %></p>
+			</div>
+		</div>
 	</div>
+	
+	<div class="ui-grid-a">
+		<div class="ui-block-a"><a href="#" data-role="button", data-mini="true", data-icon="arrow-d", data-theme="e", data-iconpos="right"> Pros </a></div>
+		<div class="ui-block-b"><a href="#cons" data-role="button", data-mini="true", data-theme="c", data-transition="flip"> Cons </a></div>
 	</div>
 
-	<%= link_to 'Quiz', showquestion_reason_path(@reason), {"data-ajax"=>"false","data-role"=>"button", "data-mini"=>"true", "data-icon"=>"check", "data-theme"=>"b"} %> 
+	<div data-role="content">
+		<ul data-role="listview">
+			<li><a href="index.html">Inbox <span class="ui-li-count">12</span></a></li>
+			<li><a href="index.html">Outbox <span class="ui-li-count">0</span></a></li>
+		</ul>
+	</div>
+</div>
+
+<div data-role="page" id="cons">
+	<div data-role="navbar" data-iconpos="left" style="background-color:#303030">
+		<ul>
+			<li><%= link_to "Quiz!", showquestion_reason_path(@reason), {"data-ajax"=>"false", "data-role"=>"button", "data-mini"=>"true", "data-icon"=>"check", "data-theme"=>"a"}%></li>
+			<li><%= link_to "Home", ts_path, {"data-role"=>"button", "data-mini"=>"true", "data-icon"=>"home", "data-theme"=>"a"}%></li>
+			<li><%= link_to "Edit", @topic, {"data-role"=>"button", "data-mini"=>"true", "data-icon"=>"gear", "data-theme"=>"a"}%></li>
+		</ul>
+	</div>
+
+	<div data-role="header" data-theme="c" style="white-space: normal; min-height: 1em;
+		padding: 0.5em 0.3em 0.3em 0.3em">	
+		<p style="margin:0; text-align: center; line-height:135%;"><%= @topic.title %></p>
+	</div>
+	
+	<div class="ui-grid-b">
+		<div class="ui-block-a"></div>
+		<div class="ui-block-b">
+			<div data-role="collapsible" data-mini="true" style="margin: 0.3em -0.3em 0 -0.3em;">
+			   <h2>Description</h2>
+			   <p style="margin: -0.5em -7.9em -0.5em -7.9em; font-size: 0.85em;"><%= @topic.description %></p>
+			</div>
+		</div>
+	</div>
+	
+	<div class="ui-grid-a">
+		<div class="ui-block-a"><a href="#pros" data-role="button", data-mini="true" data-theme="c", data-transition="flip"> Pros </a></div>
+		<div class="ui-block-b"><a href="#" data-role="button", data-mini="true", data-icon="arrow-d", data-theme="e", data-iconpos="left"> Cons </a></div>
+	</div>
+
+	<div data-role="content">
+		<ul data-role="listview">
+			<li><a href="index.html">Inbox <span class="ui-li-count">12</span></a></li>
+			<li><a href="index.html">Outbox <span class="ui-li-count">0</span></a></li>
+		</ul>
+	</div>
 </div>
