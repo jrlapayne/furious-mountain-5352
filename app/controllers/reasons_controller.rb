@@ -7,7 +7,7 @@ class ReasonsController < ApplicationController
   def showquestion
       
     @reason = Reason.find_by_id(params[:id])
-    @topic = Topic.find_by_id(@reason.topic_id)
+    @topic = T.find_by_id(@reason.topic_id)
     @quizactivity = Quizactivity.new
   end
   
@@ -23,7 +23,7 @@ class ReasonsController < ApplicationController
     end
     
     if i == (reasons.count-1)
-      redirect_to topics_path
+      redirect_to ts_path
     else
       redirect_to showquestion_reason_path(reasons[i+1].id)
     end
@@ -41,7 +41,7 @@ class ReasonsController < ApplicationController
     end
     
     if i == (reasons.count-1)
-      redirect_to topics_path
+      redirect_to ts_path
     else
       redirect_to showquestion_reason_path(reasons[i+1].id)
     end

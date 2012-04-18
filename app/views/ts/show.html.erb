@@ -1,0 +1,19 @@
+<div data-role="navbar" data-iconpos="left">
+	<ul>
+		<li><%= link_to "Topic", @topic, {"data-role"=>"button", "data-mini"=>"true", "data-icon"=>"arrow-u", "data-theme"=>"b"}%></li>
+		<li><%= link_to "Home", ts_path, {"data-role"=>"button", "data-mini"=>"true", "data-icon"=>"home", "data-theme"=>"a"}%></li>
+		<li><%= link_to "Topic", @topic, {"data-role"=>"button", "data-mini"=>"true", "data-icon"=>"arrow-u", "data-theme"=>"b"}%></li>
+		<li><%= link_to "Home", ts_path, {"data-role"=>"button", "data-mini"=>"true", "data-icon"=>"home", "data-theme"=>"a"}%></li>
+	</ul>
+</div>
+
+<div data-role="header" style="white-space: normal; min-height: 1em;
+	padding: 0.5em 0.3em 0.3em 0.3em">	
+	<p style="margin:0; text-align: center; line-height:135%;"><%= @topic.title %></p>
+</div>
+
+<p>
+	<%= @topic.description %>
+</p>
+
+<%= link_to 'Quiz', showquestion_reason_path(@reason), {"data-ajax"=>"false","data-role"=>"button", "data-mini"=>"true", "data-icon"=>"check", "data-theme"=>"b"} %> 

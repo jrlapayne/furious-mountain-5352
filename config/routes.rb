@@ -1,5 +1,5 @@
 Mobile4::Application.routes.draw do
-  resources :topics
+  resources :ts
   resources :quizzes
   resources :answers
   resources :quizactivities

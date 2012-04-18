@@ -1,3 +1,3 @@
 class Quiz < ActiveRecord::Base
-  belongs_to :topic
+  belongs_to :t
 end
