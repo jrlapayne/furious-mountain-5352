@@ -14,7 +14,7 @@
 	<p><%= @reason.title %></p>
 	<div style="height: 1em;"></div>
 		<% if @quizactivity.next_reason < 999999 %>
-			<%= link_to("Next Question", showquestion_reason_path(@quizactivity.next_reason), "data-role" => "button", "data-icon"=>"arrow-r", "data-iconpos"=>"right")%>
+			<%= link_to("Next Question", showquestion_reason_path(@quizactivity.next_reason), "data-role" => "button", "data-icon"=>"arrow-r", "data-iconpos"=>"right", "data-ajax"=>"false")%>
 		<% else %>
 			<%= link_to("Finish Quiz!", topics_path, "data-role" => "button", "data-icon"=>"arrow-r", "data-iconpos"=>"right")%>
 		<% end %>	
