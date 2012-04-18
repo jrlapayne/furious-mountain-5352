@@ -17,6 +17,7 @@
 			<% end %>
 		</div>
 	<% end %>
+	<%= render 'layouts/footer'%>
 </div>
 
 <div data-role="page" id="learn">
@@ -26,6 +27,7 @@
 	</div>
 	<div><a href="#one" data-role="button", data-mini="true", data-transition="flip", data-icon="back", data-theme="e"> Back to Quiz </a></div>	 
 	<p><%= @reason.content %></p>
+	<%= render 'layouts/footer'%>
 </div>
 
 <div data-role="page" id="learn_answered">
@@ -36,6 +38,7 @@
 	<div><a href="#" data-role="button", data-mini="true", data-transition="flip", data-icon="back", data-rel="back", data-theme="e"> Back to Quiz </a></div>	 
 	<p><%= @reason.title %></p>
 	<p><%= @reason.content %></p>
+	<%= render 'layouts/footer'%>
 </div>
 
 <div data-role="page" id="correct">
@@ -49,7 +52,8 @@
 	<div style="height: 1em;"></div>
 	<%= link_to("Next", correct_reason_path(@reason), "data-role" => "button", "data-icon"=>"arrow-r", "data-iconpos"=>"right", "data-ajax"=>"false")%>
 	<div style="height: 2em;"></div>	
-	<div><a href="#learn_answered" data-role="button", data-icon="info", data-theme="e", data-iconpos="right"> Learn More </a></div>			 
+	<div><a href="#learn_answered" data-role="button", data-icon="info", data-theme="e", data-iconpos="right"> Learn More </a></div>
+	<%= render 'layouts/footer'%>			 
 </div>
 
 <div data-role="page" id="wrong">
@@ -63,5 +67,6 @@
 	<div style="height: 1em;"></div>
 	<%= link_to("Next", wrong_reason_path(@reason), "data-role" => "button", "data-icon"=>"arrow-r", "data-iconpos"=>"right", "data-ajax"=>"false")%>
 	<div style="height: 2em;"></div>	
-	<div><a href="#learn_answered" data-role="button", data-icon="info", data-theme="e", data-iconpos="right"> Learn More </a></div>			 
+	<div><a href="#learn_answered" data-role="button", data-icon="info", data-theme="e", data-iconpos="right"> Learn More </a></div>
+	<%= render 'layouts/footer'%>			 
 </div>
