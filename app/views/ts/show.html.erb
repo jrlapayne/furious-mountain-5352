@@ -23,14 +23,15 @@
 	</div>
 	
 	<div class="ui-grid-a">
-		<div class="ui-block-a"><a href="#" data-role="button", data-mini="true", data-icon="arrow-d", data-theme="e", data-iconpos="right"> Pros </a></div>
+		<div class="ui-block-a"><a href="#" data-role="button", data-mini="true", data-icon="arrow-d", data-theme="b", data-iconpos="right"> Pros </a></div>
 		<div class="ui-block-b"><a href="#cons" data-role="button", data-mini="true", data-theme="c", data-transition="flip"> Cons </a></div>
 	</div>
 
 	<div data-role="content">
 		<ul data-role="listview">
-			<li><a href="index.html">Inbox <span class="ui-li-count">12</span></a></li>
-			<li><a href="index.html">Outbox <span class="ui-li-count">0</span></a></li>
+			<% @pros.each do |i|%>
+				<li><a href="index.html" style="white-space: normal; margin: 0 -0.9em 0 -0.5em; font-size: 0.9em;"><%= i.title %> <span class="ui-li-count"><%=i.score%></span></a></li>
+			<% end %>
 		</ul>
 	</div>
 </div>
@@ -61,7 +62,7 @@
 	
 	<div class="ui-grid-a">
 		<div class="ui-block-a"><a href="#pros" data-role="button", data-mini="true" data-theme="c", data-transition="flip"> Pros </a></div>
-		<div class="ui-block-b"><a href="#" data-role="button", data-mini="true", data-icon="arrow-d", data-theme="e", data-iconpos="left"> Cons </a></div>
+		<div class="ui-block-b"><a href="#" data-role="button", data-mini="true", data-icon="arrow-d", data-theme="b", data-iconpos="left"> Cons </a></div>
 	</div>
 
 	<div data-role="content">

@@ -27,5 +27,18 @@ class TsController < ApplicationController
     @topic = T.find_by_id(params[:id])
     reasons = Reason.where(topic_id: @topic.id, question_approved: true)
     @reason = reasons.first
+    
+    @pros = Reason.where(topic_id: @topic.id, is_pro: true)
+    @cons = Reason.where(topic_id: @topic.id, is_pro: false)
+    
+    unless @pros.empty?
+      @pros.sort! { |a,b| a.score <=> b.score}
+      @pros.reverse!  
+    end
+    
+    unless @cons.empty? 
+      @cons.sort! { |a,b| a.score <=> b.score}
+      @cons.reverse!
+    end
   end
 end
