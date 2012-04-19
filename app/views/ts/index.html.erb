@@ -1,5 +1,5 @@
 <div data-role="content", style="padding: 0.65em 0.1em 0 0.1em">
-	<ul data-role="listview" data-filter="true" data-inset="true" data-filter-placeholder=" Welcome to fuseGap!  Filter topics...">
+	<ul data-role="listview" data-filter="true" data-inset="true" data-filter-placeholder=" fuseGap!  Type to filter topics...">
 		<% toggle = 0 %>
 		<% @topics.each do |i| %>
 			<% if toggle % 2 == 0 %>
@@ -13,10 +13,11 @@
 </div>
 
 <div data-role="footer" data-position="fixed">
-	<div data-role="navbar" data-iconpos="left" style="background-color:#303030;">
+	<div data-role="navbar" data-iconpos="top" style="background-color:#303030;">
 		<ul>
-			<li><%= link_to "fuseGap", "#", {"data-role"=>"button", "data-mini"=>"true", "data-icon"=>"home", "data-theme"=>"a"}%></li>
-			<li><%= link_to "Profile", "#", {"data-role"=>"button", "data-mini"=>"true", "data-icon"=>"grid", "data-theme"=>"a"}%></li>
+			<li><%= link_to "About", "#", {"data-role"=>"button", "data-icon"=>"info", "data-theme"=>"a"}%></li>
+	 		<li><%= link_to "Profile", "#", {"data-role"=>"button", "data-icon"=>"home", "data-theme"=>"a"}%></li>
+			<li><%= link_to "New Topic", "#", {"data-role"=>"button", "data-icon"=>"plus", "data-theme"=>"e"}%></li>
 		</ul>
 	</div>
 </div>

@@ -65,4 +65,8 @@ class TsController < ApplicationController
       @cons.reverse!  
     end
   end
+  
+  def about
+    
+  end
 end
