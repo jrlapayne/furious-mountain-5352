@@ -50,13 +50,24 @@ class ReasonsController < ApplicationController
   
   def upvote
     reason = Reason.find_by_id(params[:id])
-    topic = T.find_by_id(reason.topic_id)
     reason.scorings.create(vote: 1)
+    
+    reason.score = Scoring.where(reason_id: reason.id).sum(:vote)
+    reason.save
+    
+    topic = T.find_by_id(reason.topic_id)
     redirect_to votepros_t_path(topic)
   end
   
   def downvote
+    reason = Reason.find_by_id(params[:id])
+    reason.scorings.create(vote: -1)
     
+    reason.score = Scoring.where(reason_id: reason.id).sum(:vote)
+    reason.save
+    
+    topic = T.find_by_id(reason.topic_id)
+    redirect_to votepros_t_path(topic)
   end
   
 end

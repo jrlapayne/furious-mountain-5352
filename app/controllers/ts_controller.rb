@@ -57,6 +57,12 @@ class TsController < ApplicationController
   end
   
   def votecons
+    @topic = T.find_by_id(params[:id])
+    @cons = Reason.where(topic_id: @topic.id, is_pro: false)
     
+    unless @cons.empty?
+      @cons.sort! { |a,b| a.score <=> b.score}
+      @cons.reverse!  
+    end
   end
 end

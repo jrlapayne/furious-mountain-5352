@@ -2,16 +2,16 @@
 
 <div class="ui-grid-a">
 	<div class="ui-block-a">
-		<%= link_to("Pros", "#", "data-role" => "button", "data-icon"=>"arrow-d", "data-iconpos"=>"right", "data-theme"=>"b")%>
+		<%= link_to("Pros", votepros_t_path(@topic), "data-role" => "button")%>
 	</div>
 	<div class="ui-block-b">
-		<%= link_to("Cons", votecons_t_path(@topic), "data-role" => "button")%>
+		<%= link_to("Cons", "#", "data-role" => "button", "data-icon"=>"arrow-d", "data-iconpos"=>"left", "data-theme"=>"b")%>
 	</div>
 </div>
 
 <div data-role="content">
 	<ul data-role="listview">
-		<% @pros.each do |i|%>
+		<% @cons.each do |i|%>
 			<li>
 				<%= link_to(i, :style=>"white-space: normal; margin: 0 -0.9em 0 -0.8em; font-size: 0.9em;") do %>
 					<%= i.title %>

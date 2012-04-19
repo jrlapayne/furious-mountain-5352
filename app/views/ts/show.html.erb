@@ -69,7 +69,7 @@
 </div>
 
 <div data-role="page" id="votingviewpros">
-	<%= link_to("Finished Voting", "#", "data-role" => "button", "data-icon"=>"back", "data-iconpos"=>"left", "data-theme"=>"e", "data-mini"=>"true", "data-rel"=>"back")%>
+	<%= link_to("Finished Voting", "#pros", "data-role" => "button", "data-icon"=>"back", "data-iconpos"=>"left", "data-theme"=>"e", "data-mini"=>"true")%>
 
 	<div class="ui-grid-a">
 		<div class="ui-block-a"><a href="#" data-role="button", data-icon="arrow-d", data-theme="b", data-iconpos="right"> Pros </a></div>
@@ -80,22 +80,49 @@
 		<ul data-role="listview">
 			<% @pros.each do |i|%>
 				<li>
-					<%= link_to(i, :style=>"white-space: normal; margin: 0 -0.9em 0 -0.8em; font-size: 0.9em;") do %>
+					<%= link_to(i, :style=>"white-space: normal; margin: 0 0em -0.7em -0.8em; font-size: 0.9em;") do %>
 						<%= i.title %>
 						<span class="ui-li-count", style="font-size: 1.4em"><%=i.score%></span>
 					<% end %>
 				</li>
-				<div class="ui-grid-c", style="margin: 0.2em 0 0.5em 0;">
+				<div class="ui-grid-c", style="margin: -0.4em 0 0.5em 0;">
 					<div class="ui-block-a"></div>
 					<div class="ui-block-b">
-						<div data-role="button", data-mini="true">
-						<%= link_to(upvote_reason_path(i), style: "font-size: 1.5em; color: #198219; text-decoration: none;") do %> +	<% end %>
-						</div>
+						<%= link_to "+", upvote_reason_path(i), {"data-role"=>"button", "style"=>"color: #198219"}%>
 					</div>
 					<div class="ui-block-c">
-						<div data-role="button", data-mini="true">
-						<%= link_to("#", style: "font-size: 1.5em; color: #e60000; text-decoration: none;") do %> &#8722;	<% end %>
-						</div>
+						<%= link_to '&#8722;'.html_safe, downvote_reason_path(i), {"data-role"=>"button", "style"=>"color: #e60000"}%>
+					</div>
+				</div>
+			<% end %>		
+		</ul>
+	</div>
+</div>
+
+<div data-role="page" id="votingviewcons">
+	<%= link_to("Finished Voting", "#pros", "data-role" => "button", "data-icon"=>"back", "data-iconpos"=>"left", "data-theme"=>"e", "data-mini"=>"true")%>
+
+	<div class="ui-grid-a">
+		<div class="ui-block-a"><a href="#votingviewpros" data-role="button", data-theme="c", data-transition="flip"> Pros </a></div>
+		<div class="ui-block-b"><a href="#" data-role="button", data-icon="arrow-d", data-theme="b", data-iconpos="left"> Cons </a></div>
+	</div>
+
+	<div data-role="content">
+		<ul data-role="listview">
+			<% @cons.each do |i|%>
+				<li>
+					<%= link_to(i, :style=>"white-space: normal; margin: 0 0em -0.7em -0.8em; font-size: 0.9em;") do %>
+						<%= i.title %>
+						<span class="ui-li-count", style="font-size: 1.4em"><%=i.score%></span>
+					<% end %>
+				</li>
+				<div class="ui-grid-c", style="margin: -0.4em 0 0.5em 0;">
+					<div class="ui-block-a"></div>
+					<div class="ui-block-b">
+						<%= link_to "+", upvote_reason_path(i), {"data-role"=>"button", "style"=>"color: #198219"}%>
+					</div>
+					<div class="ui-block-c">
+						<%= link_to '&#8722;'.html_safe, downvote_reason_path(i), {"data-role"=>"button", "style"=>"color: #e60000"}%>
 					</div>
 				</div>
 			<% end %>		
