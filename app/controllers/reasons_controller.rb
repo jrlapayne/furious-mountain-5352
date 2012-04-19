@@ -2,6 +2,7 @@ class ReasonsController < ApplicationController
   
   def show
     @reason = Reason.find_by_id(params[:id])
+    @topic = T.find_by_id(@reason.topic_id)
   end
   
   def showquestion

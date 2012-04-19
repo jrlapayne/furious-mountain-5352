@@ -10,7 +10,7 @@ Mobile4::Application.routes.draw do
   end
   resources :ts do
     member do
-      get :description
+      get :description, :votepros, :votecons
     end
   end
   

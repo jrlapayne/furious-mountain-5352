@@ -1,35 +1,20 @@
-<div data-role="navbar" data-iconpos="left" style="background-color:#303030">
+<div data-role="navbar" data-iconpos="left" style="background-color:#303030;">
 	<ul>
-		<li><%= link_to "Quiz!", showquestion_reason_path(@reason), {"data-ajax"=>"false", "data-role"=>"button", "data-mini"=>"true", "data-icon"=>"check", "data-theme"=>"a"}%></li>
-		<li><%= link_to "Home", ts_path, {"data-role"=>"button", "data-mini"=>"true", "data-icon"=>"home", "data-theme"=>"a"}%></li>
-		<li><%= link_to "Edit", @topic, {"data-role"=>"button", "data-mini"=>"true", "data-icon"=>"gear", "data-theme"=>"a"}%></li>
+		<li><%= link_to "fuseGap", "#", {"data-role"=>"button", "data-mini"=>"true", "data-icon"=>"home", "data-theme"=>"a"}%></li>
+		<li><%= link_to "Profile", "#", {"data-role"=>"button", "data-mini"=>"true", "data-icon"=>"grid", "data-theme"=>"a"}%></li>
 	</ul>
 </div>
 
-<div data-role="header" data-theme="c" style="white-space: normal; min-height: 1em;
-	padding: 0.5em 0.3em 0.3em 0.3em">	
-	<p style="margin:0; text-align: center; line-height:135%;"><%= @topic.title %></p>
-</div>
-
-<div class="ui-grid-b">
-	<div class="ui-block-a"></div>
-	<div class="ui-block-b">
-		<div data-role="collapsible" data-mini="true" style="margin: 0.3em -0.3em 0 -0.3em;">
-		   <h2>Description</h2>
-		   <p style="margin: -0.5em -7.9em -0.5em -7.9em; font-size: 0.85em;"><%= @topic.description %></p>
-		</div>
-	</div>
-</div>
-
-<div class="ui-grid-a">
-	<div class="ui-block-a"><a href="#" data-role="button", data-mini="true", data-icon="arrow-d", data-theme="b", data-iconpos="right"> Pros </a></div>
-	<div class="ui-block-b"><a href="#cons" data-role="button", data-mini="true", data-theme="c", data-transition="flip"> Cons </a></div>
-</div>
-
 <div data-role="content">
-	<ul data-role="listview">
-		<% @pros.each do |i|%>
-			<li><a href="index.html" style="white-space: normal; margin: 0 -0.9em 0 -0.8em; font-size: 0.9em;"><%= i.title %> <span class="ui-li-count"><%=i.score%></span></a></li>
+	<ul data-role="listview" data-filter="true" data-inset="true" data-filter-placeholder="Filter Topics...">
+		<% toggle = 0 %>
+		<% @topics.each do |i| %>
+			<% if toggle % 2 == 0 %>
+				<li><%= link_to i.title, i, {"style"=>"white-space: normal; line-height:135%; font-size: 0.9em;", "data-ajax"=>"false"}%></li>
+			<% else %>
+				<li><%= link_to i.title, i, {"style"=>"white-space: normal; line-height:135%; font-size: 0.9em; color:#0f4880", "data-ajax"=>"false"}%></li>
+			<% end %>
+			<% toggle += 1%>
 		<% end %>
 	</ul>
 </div>

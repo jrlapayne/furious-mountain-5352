@@ -1,0 +1,9 @@
+@
+<%= form_for @upvote do |f| %>
+  <div class="actions", style="margin:0.7em;">
+		<%= f.hidden_field :reason_id, value: @reason.id %>
+		<%= f.hidden_field :user_id, value: 999 %>
+		<%= f.hidden_field :vote, value: 1 %>
+    <%= f.submit "", "data-icon"=>"plus"%>
+  </div>
+<% end %>

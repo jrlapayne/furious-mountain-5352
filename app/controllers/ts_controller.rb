@@ -45,4 +45,12 @@ class TsController < ApplicationController
   def description
     @topic = T.find_by_id(params[:id])
   end
+  
+  def votepros
+    
+  end
+  
+  def votecons
+    
+  end
 end

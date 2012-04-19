@@ -1,14 +1,19 @@
 <div data-role="page" id="one">
 	<div data-role="navbar" data-iconpos="left">
 		<ul>
-			<li><%= link_to "Topic", @topic, {"data-role"=>"button", "data-mini"=>"true", "data-icon"=>"arrow-u", "data-theme"=>"b", "data-ajax"=>"false"}%></li>
+			<li><%= link_to "Topic", @topic, {"data-role"=>"button", "data-mini"=>"true", "data-icon"=>"arrow-u", "data-theme"=>"a", "data-ajax"=>"false"}%></li>
 			<li><%= link_to "Home", ts_path, {"data-role"=>"button", "data-mini"=>"true", "data-icon"=>"home", "data-theme"=>"a"}%></li>
 		</ul>
 	</div>
-
-	<div data-role="header" style="white-space: normal; min-height: 1em;
+	
+	<div data-role="header" data-theme="b" style="white-space: normal; min-height: 1em;
 		padding: 0.5em 0.3em 0.3em 0.3em">	
-		<p style="margin:0; text-align: center; line-height:135%;"><%= @reason.question %></p>
+		<p style="margin:0; text-align: center; line-height:135%;">Quiz</p>
+	</div>
+
+	<div data-role="header" data-theme="c" style="white-space: normal; min-height: 1em;
+		padding: 0.5em 0.3em 0.3em 0.3em">	
+		<p style="margin:0; text-align: center; line-height:135%;"><%=@reason.question%></p>
 	</div>
 	<div class="ui-grid-b", style="min-height:2em;">
 		<div class="ui-block-a"></div>	 
@@ -27,22 +32,17 @@
 </div>
 
 <div data-role="page" id="learn">
-	<div data-role="header" style="white-space: normal; min-height: 25px;
-		padding: 0.3em">	
-		<p style="margin:0; text-align: center"><%= @reason.question %></p>
+	<div data-role="header" data-theme="c" style="white-space: normal; min-height: 1em;
+		padding: 0.5em 0.3em 0.3em 0.3em">	
+		<p style="margin:0; text-align: center; line-height:135%;">Info</p>
 	</div>
 	<div><a href="#one" data-role="button", data-mini="true", data-transition="flip", data-icon="back", data-theme="e"> Back to Quiz </a></div>	 
-	<p><%= @reason.content %></p>
-</div>
-
-<div data-role="page" id="learn_answered">
-	<div data-role="header" style="white-space: normal; min-height: 25px;
-		padding: 0.3em">	
-		<p style="margin:0; text-align: center"><%= @reason.question %></p>
+	<p style="padding: 0.5em; line-height:130%; font-size: 0.9em;"><%= @reason.content %></p>
+	
+	<div class="ui-grid-b"> 
+		<div class="ui-block-a"></div>
+		<div class="ui-block-b", style="margin: 0.4em 0 0 0;"><a href="#" data-role="button", data-mini="true", data-icon="gear", data-theme="c", data-iconpos="right"> Edit </a></div>
 	</div>
-	<div><a href="#" data-role="button", data-mini="true", data-transition="flip", data-icon="back", data-rel="back", data-theme="e"> Back to Quiz </a></div>	 
-	<p><%= @reason.title %></p>
-	<p><%= @reason.content %></p>
 </div>
 
 <div data-role="page" id="correct">
@@ -52,11 +52,11 @@
 			Correct!
 		</p>
 	</div>
-	<p><%= @reason.title %></p>
+	<p style="padding: 0.5em;"><%= @reason.title %></p>
 	<div style="height: 1em;"></div>
-	<%= link_to("Next", correct_reason_path(@reason), "data-role" => "button", "data-icon"=>"arrow-r", "data-iconpos"=>"right", "data-ajax"=>"false")%>
-	<div style="height: 2em;"></div>	
-	<div><a href="#learn_answered" data-role="button", data-icon="info", data-theme="e", data-iconpos="right"> Learn More </a></div>		 
+	<%= link_to("Next", correct_reason_path(@reason), "data-role" => "button", "data-icon"=>"arrow-r", "data-iconpos"=>"right", "data-theme"=>"e", "data-ajax"=>"false")%>
+	<div style="height: 1.5em;"></div>	
+	<div><a href="#learn" data-role="button", data-icon="info", data-iconpos="right"> Learn More </a></div>		 
 </div>
 
 <div data-role="page" id="wrong">
@@ -66,9 +66,9 @@
 			Wrong!
 		</p>
 	</div>
-	<p><%= @reason.title %></p>
+	<p style="padding: 0.5em;"><%= @reason.title %></p>
 	<div style="height: 1em;"></div>
-	<%= link_to("Next", wrong_reason_path(@reason), "data-role" => "button", "data-icon"=>"arrow-r", "data-iconpos"=>"right", "data-ajax"=>"false")%>
-	<div style="height: 2em;"></div>	
-	<div><a href="#learn_answered" data-role="button", data-icon="info", data-theme="e", data-iconpos="right"> Learn More </a></div>			 
+	<%= link_to("Next", wrong_reason_path(@reason), "data-role" => "button", "data-icon"=>"arrow-r", "data-iconpos"=>"right", "data-theme"=>"e", "data-ajax"=>"false")%>
+	<div style="height: 1.5em;"></div>	
+	<div><a href="#learn" data-role="button", data-icon="info", data-iconpos="right"> Learn More </a></div>			 
 </div>

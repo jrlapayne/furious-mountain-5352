@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120418025454) do
+ActiveRecord::Schema.define(:version => 20120419001426) do
 
   create_table "answers", :force => true do |t|
     t.string   "content"
@@ -47,6 +47,14 @@ ActiveRecord::Schema.define(:version => 20120418025454) do
     t.boolean  "is_pro"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+  end
+
+  create_table "scorings", :force => true do |t|
+    t.integer  "reason_id"
+    t.integer  "user_id"
+    t.integer  "vote"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "ts", :force => true do |t|

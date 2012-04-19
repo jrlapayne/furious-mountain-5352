@@ -1,27 +1,33 @@
 <div data-role="page" id="pros">
-	<div data-role="navbar" data-iconpos="left" style="background-color:#303030">
+	<div data-role="navbar" data-iconpos="left" style="background-color:#303030;">
 		<ul>
 			<li><%= link_to "Quiz!", showquestion_reason_path(@reason), {"data-ajax"=>"false", "data-role"=>"button", "data-mini"=>"true", "data-icon"=>"check", "data-theme"=>"a"}%></li>
 			<li><%= link_to "Home", ts_path, {"data-role"=>"button", "data-mini"=>"true", "data-icon"=>"home", "data-theme"=>"a"}%></li>
-			<li><%= link_to "Edit", @topic, {"data-role"=>"button", "data-mini"=>"true", "data-icon"=>"gear", "data-theme"=>"a"}%></li>
+			<li><%= link_to "Vote!", "#votingviewpros", {"data-role"=>"button", "data-mini"=>"true", "data-icon"=>"gear", "data-theme"=>"a"}%></li>
 		</ul>
 	</div>
 
-	<div data-role="header" data-theme="c" style="white-space: normal; min-height: 1em;
-		padding: 0.5em 0.3em 0.3em 0.3em">	
-		<p style="margin: 0 1.7em 0 -0.2em; text-align: center; line-height:135%;"><%= @topic.title %></p>
-		<%= link_to "Topic Description", description_t_path(@topic), {"data-icon"=>"info", "data-iconpos"=>"notext", "data-theme"=>"d", "data-transition"=>"slidedown", "class"=>"ui-btn-right"}%>
-	</div>
+	<ul data-role="listview" data-split-icon="info" data-split-theme="c">
+		<li>
+			<a href="#"><p style="margin: 0 -3.3em 0 -0.8em; text-align: center; line-height:135%; font-size: 1em; font-weight: bold; white-space: normal;"><%= @topic.title %></p></a>
+			<%= link_to "Topic Description", description_t_path(@topic), {"data-icon"=>"info", "data-iconpos"=>"notext", "data-theme"=>"e", "data-transition"=>"slidedown", "class"=>"ui-btn-right" }%>
+		</li>
+	</ul>
 	
 	<div class="ui-grid-a">
-		<div class="ui-block-a"><a href="#" data-role="button", data-mini="true", data-icon="arrow-d", data-theme="b", data-iconpos="right"> Pros </a></div>
-		<div class="ui-block-b"><a href="#cons" data-role="button", data-mini="true", data-theme="c", data-transition="flip"> Cons </a></div>
+		<div class="ui-block-a"><a href="#" data-role="button", data-icon="arrow-d", data-theme="b", data-iconpos="right"> Pros </a></div>
+		<div class="ui-block-b"><a href="#cons" data-role="button", data-theme="c", data-transition="flip"> Cons </a></div>
 	</div>
 
 	<div data-role="content">
 		<ul data-role="listview">
 			<% @pros.each do |i|%>
-				<li><a href="index.html" style="white-space: normal; margin: 0 -0.9em 0 -0.8em; font-size: 0.9em;"><%= i.title %> <span class="ui-li-count"><%=i.score%></span></a></li>
+				<li>
+					<%= link_to(i, :style=>"white-space: normal; margin: 0 -0.9em 0 -0.8em; font-size: 0.9em;") do %>
+						<%= i.title %>
+						<span class="ui-li-count"><%=i.score%></span>
+					<% end %>
+				</li>
 			<% end %>
 		</ul>
 	</div>
@@ -32,25 +38,104 @@
 		<ul>
 			<li><%= link_to "Quiz!", showquestion_reason_path(@reason), {"data-ajax"=>"false", "data-role"=>"button", "data-mini"=>"true", "data-icon"=>"check", "data-theme"=>"a"}%></li>
 			<li><%= link_to "Home", ts_path, {"data-role"=>"button", "data-mini"=>"true", "data-icon"=>"home", "data-theme"=>"a"}%></li>
-			<li><%= link_to "Edit", @topic, {"data-role"=>"button", "data-mini"=>"true", "data-icon"=>"gear", "data-theme"=>"a"}%></li>
+			<li><%= link_to "Vote!", "#votingviewcons", {"data-role"=>"button", "data-mini"=>"true", "data-icon"=>"gear", "data-theme"=>"a"}%></li>
 		</ul>
 	</div>
 
-	<div data-role="header" data-theme="c" style="white-space: normal; min-height: 1em;
-		padding: 0.5em 0.3em 0.3em 0.3em">	
-		<p style="margin: 0 1.7em 0 -0.2em; text-align: center; line-height:135%;"><%= @topic.title %></p>
-		<a href="index.html" data-icon="info" data-iconpos="notext" data-theme="d" class="ui-btn-right">Topic Description</a>
-	</div>
+	<ul data-role="listview" data-split-icon="info" data-split-theme="c">
+		<li>
+			<a href="#"><p style="margin: 0 -3.3em 0 -0.8em; text-align: center; line-height:135%; font-size: 1em; font-weight: bold; white-space: normal;"><%= @topic.title %></p></a>
+			<%= link_to "Topic Description", description_t_path(@topic), {"data-icon"=>"info", "data-iconpos"=>"notext", "data-theme"=>"e", "data-transition"=>"slidedown", "class"=>"ui-btn-right" }%>
+		</li>
+	</ul>
 	
 	<div class="ui-grid-a">
-		<div class="ui-block-a"><a href="#pros" data-role="button", data-mini="true" data-theme="c", data-transition="flip"> Pros </a></div>
-		<div class="ui-block-b"><a href="#" data-role="button", data-mini="true", data-icon="arrow-d", data-theme="b", data-iconpos="left"> Cons </a></div>
+		<div class="ui-block-a"><a href="#pros" data-role="button", data-theme="c", data-transition="flip"> Pros </a></div>
+		<div class="ui-block-b"><a href="#" data-role="button", data-icon="arrow-d", data-theme="b", data-iconpos="left"> Cons </a></div>
 	</div>
 
 	<div data-role="content">
 		<ul data-role="listview">
 			<% @cons.each do |i|%>
-				<li><a href="index.html" style="white-space: normal; margin: 0 -0.9em 0 -0.8em; font-size: 0.9em;"><%= i.title %> <span class="ui-li-count"><%=i.score%></span></a></li>
+				<li>
+					<%= link_to(i, :style=>"white-space: normal; margin: 0 -0.9em 0 -0.8em; font-size: 0.9em;") do %>
+						<%= i.title %>
+						<span class="ui-li-count"><%=i.score%></span>
+					<% end %>
+				</li>
+			<% end %>
+		</ul>
+	</div>
+</div>
+
+<div data-role="page" id="votingviewpros">
+	<script>
+	$('*').live('click', function() {
+	    $(this).removeClass("ui-btn-active");
+	})
+	</script>
+
+	<div data-role="navbar" data-iconpos="left" style="background-color:#303030;">
+		<ul>
+			<li><%= link_to "Back", @topic, { "data-role"=>"button", "data-mini"=>"true", "data-icon"=>"back", "data-theme"=>"e"}%></li>
+			<li><%= link_to "Home", ts_path, {"data-role"=>"button", "data-mini"=>"true", "data-icon"=>"home", "data-theme"=>"a"}%></li>
+			<li><%= link_to "Vote!", "#", {"data-role"=>"button", "data-mini"=>"true", "data-icon"=>"arrow-d", "data-theme"=>"b"}%></li>
+		</ul>
+	</div>
+
+	<div class="ui-grid-a">
+		<div class="ui-block-a"><a href="#" data-role="button", data-icon="arrow-d", data-theme="b", data-iconpos="right"> Pros </a></div>
+		<div class="ui-block-b"><a href="#votingviewcons" data-role="button", data-theme="c", data-transition="flip"> Cons </a></div>
+	</div>
+
+	<div data-role="content">
+		<ul data-role="listview">
+			<% @pros.each do |i|%>
+				<li>
+					<%= link_to(i, :style=>"white-space: normal; margin: 0 -0.9em 0 -0.8em; font-size: 0.9em;") do %>
+						<%= i.title %>
+						<span class="ui-li-count", style="font-size: 1.4em"><%=i.score%></span>
+					<% end %>
+				</li>
+				<div class="ui-grid-c", style="margin: 0.2em 0 0.5em 0;">
+					<div class="ui-block-a"></div>
+					<div class="ui-block-b"><a href="#" data-role="button", data-theme="c", data-mini="true"><span style="font-size: 1.5em; color: #198D19;"> + </span></a></div>
+					<div class="ui-block-c"><a href="#" data-role="button", data-theme="c", data-mini="true"><span style="font-size: 1.5em; color: #e60000;"> -- </span></a></div>
+				</div>
+			<% end %>		
+		</ul>
+	</div>
+</div>
+
+<div data-role="page" id="votingviewcons">
+	<script>
+	$('*').live('click', function() {
+	    $(this).removeClass("ui-btn-active");
+	})
+	</script>
+
+	<div data-role="navbar" data-iconpos="left" style="background-color:#303030;">
+		<ul>
+			<li><%= link_to "Back", @topic, { "data-role"=>"button", "data-mini"=>"true", "data-icon"=>"back", "data-theme"=>"e"}%></li>
+			<li><%= link_to "Home", ts_path, {"data-role"=>"button", "data-mini"=>"true", "data-icon"=>"home", "data-theme"=>"a"}%></li>
+			<li><%= link_to "Vote!", "#", {"data-role"=>"button", "data-mini"=>"true", "data-icon"=>"arrow-d", "data-theme"=>"b"}%></li>
+		</ul>
+	</div>
+
+	<div class="ui-grid-a">
+		<div class="ui-block-a"><a href="#votingviewpros" data-role="button", data-theme="c", data-transition="flip"> Pros </a></div>
+		<div class="ui-block-b"><a href="#" data-role="button", data-icon="arrow-d", data-theme="b", data-iconpos="left"> Cons </a></div>
+	</div>
+
+	<div data-role="content">
+		<ul data-role="listview">
+			<% @cons.each do |i|%>
+				<li>
+					<%= link_to(i, :style=>"white-space: normal; margin: 0 -0.9em 0 -0.8em; font-size: 0.9em;") do %>
+						<%= i.title %>
+						<span class="ui-li-count"><%=i.score%></span>
+					<% end %>
+				</li>
 			<% end %>
 		</ul>
 	</div>

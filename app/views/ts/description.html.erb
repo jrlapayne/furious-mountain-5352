@@ -1,12 +1,23 @@
-<div data-role="header" style="white-space: normal; min-height: 1em;
-	padding: 0.5em 0.3em 0.3em 0.3em">	
-	<p style="margin:0; text-align: center; line-height:135%;">Topic Overview</p>
+<div data-role="navbar" data-iconpos="left" style="background-color:#303030;">
+	<ul>
+		<li><%= link_to "Quiz!", showquestion_reason_path(@reason), {"data-ajax"=>"false", "data-role"=>"button", "data-mini"=>"true", "data-icon"=>"check", "data-theme"=>"a"}%></li>
+		<li><%= link_to "Home", ts_path, {"data-role"=>"button", "data-mini"=>"true", "data-icon"=>"home", "data-theme"=>"a"}%></li>
+	</ul>
 </div>
+
 <div class="ui-grid-b"> 
-	<div class="ui-block-a", style="margin: 0.4em 0 0 0;"><a href="#" data-role="button", data-mini="true", data-icon="back", data-theme="c", data-iconpos="left", data-rel="back"> Back </a></div>
+	<div class="ui-block-a", style="margin: 0.4em 0 0 0;"><a href="#" data-role="button", data-mini="true", data-icon="back", data-theme="e", data-iconpos="left", data-rel="back"> Back </a></div>
 	<div class="ui-block-b"></div>
 	<div class="ui-block-c", style="margin: 0.4em 0 0 0;"><a href="#" data-role="button", data-mini="true", data-icon="gear", data-theme="c", data-iconpos="right"> Edit </a></div>
 </div>
+
+<div data-role="header" data-theme="c" style="white-space: normal; min-height: 1em;
+	padding: 0.5em 0.3em 0.3em 0.3em">	
+	<p style="margin:0; text-align: center; line-height:135%; font-size: 0.9em;">Topic Description</p>
+</div>
+
+
 <div>
 	<p style="margin:0.5em 0.2em 0 0.3em; line-height: 125%; font-size: 0.9em;"> <%=@topic.description%> </p>
 </div>
+
