@@ -48,4 +48,15 @@ class ReasonsController < ApplicationController
     end
   end
   
+  def upvote
+    reason = Reason.find_by_id(params[:id])
+    topic = T.find_by_id(reason.topic_id)
+    reason.scorings.create(vote: 1)
+    redirect_to votepros_t_path(topic)
+  end
+  
+  def downvote
+    
+  end
+  
 end

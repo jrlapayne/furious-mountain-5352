@@ -5,7 +5,7 @@ Mobile4::Application.routes.draw do
   
   resources :reasons do
     member do
-      get :showquestion, :correct, :wrong
+      get :showquestion, :correct, :wrong, :upvote, :downvote
     end
   end
   resources :ts do
