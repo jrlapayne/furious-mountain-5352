@@ -9,7 +9,7 @@
 
 	<ul data-role="listview" data-split-icon="info" data-split-theme="c">
 		<li>
-			<a href="#"><p style="margin: 0 -3.3em 0 -0.8em; text-align: center; line-height:135%; font-size: 1em; font-weight: bold; white-space: normal;"><%= @topic.title %></p></a>
+			<a href="#"><p style="margin: 0 -3.3em -0.5em -0.8em; text-align: center; line-height:135%; font-size: 1em; font-weight: bold; white-space: normal;"><%= @topic.title %></p></a>
 			<%= link_to "Topic Description", description_t_path(@topic), {"data-icon"=>"info", "data-iconpos"=>"notext", "data-theme"=>"e", "data-transition"=>"slidedown", "class"=>"ui-btn-right" }%>
 		</li>
 	</ul>
@@ -23,7 +23,7 @@
 		<ul data-role="listview">
 			<% @pros.each do |i|%>
 				<li>
-					<%= link_to(i, :style=>"white-space: normal; margin: 0 -0.9em 0 -0.8em; font-size: 0.9em;") do %>
+					<%= link_to(i, :style=>"white-space: normal; margin: 0 -1.6em 0 -0.8em; font-size: 0.9em;") do %>
 						<%= i.title %>
 						<span class="ui-li-count"><%=i.score%></span>
 					<% end %>
@@ -58,7 +58,7 @@
 		<ul data-role="listview">
 			<% @cons.each do |i|%>
 				<li>
-					<%= link_to(i, :style=>"white-space: normal; margin: 0 -0.9em 0 -0.8em; font-size: 0.9em;") do %>
+					<%= link_to(i, :style=>"white-space: normal; margin: 0 -1.6em 0 -0.8em; font-size: 0.9em;") do %>
 						<%= i.title %>
 						<span class="ui-li-count"><%=i.score%></span>
 					<% end %>
