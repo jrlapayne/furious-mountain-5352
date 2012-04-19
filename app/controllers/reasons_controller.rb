@@ -56,7 +56,11 @@ class ReasonsController < ApplicationController
     reason.save
     
     topic = T.find_by_id(reason.topic_id)
-    redirect_to votepros_t_path(topic)
+    if reason.is_pro?
+      redirect_to votepros_t_path(topic)
+    else
+      redirect_to votecons_t_path(topic)
+    end
   end
   
   def downvote
@@ -67,7 +71,11 @@ class ReasonsController < ApplicationController
     reason.save
     
     topic = T.find_by_id(reason.topic_id)
-    redirect_to votepros_t_path(topic)
+    if reason.is_pro?
+      redirect_to votepros_t_path(topic)
+    else
+      redirect_to votecons_t_path(topic)
+    end
   end
   
 end

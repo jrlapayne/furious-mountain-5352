@@ -21,14 +21,10 @@
 			<div class="ui-grid-c", style="margin: 0.2em 0 0.5em 0;">
 				<div class="ui-block-a"></div>
 				<div class="ui-block-b">
-					<div data-role="button", data-mini="true">
-					<%= link_to(upvote_reason_path(i), style: "font-size: 1.5em; color: #198219; text-decoration: none;") do %> +	<% end %>
-					</div>
+					<%= link_to "+", upvote_reason_path(i), {"data-role"=>"button", "style"=>"color: #198219"}%>
 				</div>
 				<div class="ui-block-c">
-					<div data-role="button", data-mini="true">
-					<%= link_to(downvote_reason_path(i), style: "font-size: 1.5em; color: #e60000; text-decoration: none;") do %> &#8722;	<% end %>
-					</div>
+					<%= link_to '&#8722;'.html_safe, downvote_reason_path(i), {"data-role"=>"button", "style"=>"color: #e60000"}%>
 				</div>
 			</div>
 		<% end %>		
