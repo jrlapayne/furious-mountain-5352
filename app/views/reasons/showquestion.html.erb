@@ -1,7 +1,7 @@
 <div data-role="page" id="one">
 	<div data-role="navbar" data-iconpos="left">
 		<ul>
-			<li><%= link_to "Topic", @topic, {"data-role"=>"button", "data-mini"=>"true", "data-icon"=>"arrow-u", "data-theme"=>"a", "data-ajax"=>"false"}%></li>
+			<li><%= link_to "Exit", @topic, {"data-role"=>"button", "data-mini"=>"true", "data-icon"=>"delete", "data-theme"=>"a", "data-ajax"=>"false"}%></li>
 			<li><%= link_to "Home", ts_path, {"data-role"=>"button", "data-mini"=>"true", "data-icon"=>"home", "data-theme"=>"a"}%></li>
 		</ul>
 	</div>
@@ -20,15 +20,18 @@
 		<div class="ui-block-b"><a href="#learn" data-role="button", data-mini="true", data-icon="info", data-theme="e", data-iconpos="right"> Learn </a></div>
 		<div class="ui-block-c"></div>	 
 	</div>
-	<% @reason.answers.each do |i| %>
-		<div style="margin:0.75em;">	
-			<% if i.is_correct? %>
-				<a href="#correct" data-role="button", data-icon="check"> <%=i.content%> </a>	
-			<% else %>
-			  <a href="#wrong" data-role="button", data-icon="check"> <%=i.content%> </a>	
-			<% end %>
-		</div>
-	<% end %>
+	<div style="margin:0.75em;">
+		<a href="#correct" data-role="button", data-icon="check"> <%=@reason.correct_answer%> </a>	
+	</div>
+	<div style="margin:0.75em;">
+		<a href="#wrong" data-role="button", data-icon="check"> <%=@reason.wrong_answer1%> </a>	
+	</div>
+	<div style="margin:0.75em;">
+		<a href="#wrong" data-role="button", data-icon="check"> <%=@reason.wrong_answer2%> </a>	
+	</div>
+	<div style="margin:0.75em;">
+		<a href="#wrong" data-role="button", data-icon="check"> <%=@reason.wrong_answer3%> </a>	
+	</div>
 </div>
 
 <div data-role="page" id="learn">
@@ -38,37 +41,36 @@
 	</div>
 	<div><a href="#" data-role="button", data-transition="flip", data-icon="back", data-theme="e", data-rel="back"> Back to Quiz </a></div>	 
 	<p style="padding: 0.5em; line-height:130%; font-size: 0.9em;"><%= @reason.content %></p>
-	
-	<div class="ui-grid-b"> 
-		<div class="ui-block-a"></div>
-		<div class="ui-block-b", style="margin: 0.4em 0 0 0;"><a href="#" data-role="button", data-mini="true", data-icon="gear", data-theme="c", data-iconpos="right"> Edit </a></div>
-	</div>
 </div>
 
 <div data-role="page" id="correct">
-	<div data-role="header" style="white-space: normal; min-height: 1em;
-		padding: 0.4em">
-		<p style="margin:0; text-align: center; color: #33cc33; font-size: 1.25em">
+	<div style="white-space: normal; min-height: 1em; padding: 0.4em">
+		<p style="margin:0; text-align: center; color: #33cc33; font-size: 1.25em; font-weight: bold;">
 			Correct!
 		</p>
 	</div>
 	<p style="padding: 0.5em;"><%= @reason.title %></p>
 	<div style="height: 1em;"></div>
-	<%= link_to("Next", correct_reason_path(@reason), "data-role" => "button", "data-icon"=>"arrow-r", "data-iconpos"=>"right", "data-theme"=>"e", "data-ajax"=>"false")%>
-	<div style="height: 1.5em;"></div>	
-	<div><a href="#learn" data-role="button", data-icon="info", data-iconpos="right"> Learn More </a></div>		 
+	<div style="margin: 1.8em;">	
+		<%= link_to("Next", correct_reason_path(@reason), "data-role" => "button", "data-icon"=>"arrow-r", "data-iconpos"=>"right", "data-theme"=>"e", "data-ajax"=>"false")%>
+	</div>
+	<div style="margin: 1.8em;">
+		<a href="#learn" data-role="button", data-icon="info", data-iconpos="right"> Learn More </a>
+	</div>		 
 </div>
 
 <div data-role="page" id="wrong">
-	<div data-role="header" style="white-space: normal; min-height: 1em;
-		padding: 0.4em">
-		<p style="margin:0; text-align: center; color: #ff0000; font-size: 1.25em">
+	<div style="white-space: normal; min-height: 1em; padding: 0.4em">
+		<p style="margin:0; text-align: center; color: #ff0000; font-size: 1.25em; font-weight: bold;">
 			Wrong!
 		</p>
 	</div>
 	<p style="padding: 0.5em;"><%= @reason.title %></p>
 	<div style="height: 1em;"></div>
-	<%= link_to("Next", wrong_reason_path(@reason), "data-role" => "button", "data-icon"=>"arrow-r", "data-iconpos"=>"right", "data-theme"=>"e", "data-ajax"=>"false")%>
-	<div style="height: 1.5em;"></div>	
-	<div><a href="#learn" data-role="button", data-icon="info", data-iconpos="right"> Learn More </a></div>			 
+	<div style="margin: 1.8em;">
+		<%= link_to("Next", wrong_reason_path(@reason), "data-role" => "button", "data-icon"=>"arrow-r", "data-iconpos"=>"right", "data-theme"=>"e", "data-ajax"=>"false")%>
+	</div>	
+	<div style="margin: 1.8em;">
+		<a href="#learn" data-role="button", data-icon="info", data-iconpos="right"> Learn More </a>
+	</div>			 
 </div>

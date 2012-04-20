@@ -1,0 +1,34 @@
+<div class="ui-grid-b"> 
+	<div class="ui-block-a">
+		<div style="margin: 0 -1em 0 0">
+			<%= link_to("Cancel", @topic, "data-role" => "button", "data-theme"=>"e", "data-icon"=>"delete", "data-mini"=>"true")%>
+		</div>
+	</div>
+	<div class="ui-block-b"></div>
+	<div class="ui-block-c">
+		<div style="margin: 0 0 0.6em -1em">
+			<%= link_to("History", "#", "data-role" => "button", "data-theme"=>"c", "data-icon"=>"gear", "data-mini"=>"true", "data-iconpos"=>"right")%>
+		</div>
+	</div>
+</div>
+
+<%= form_for @reason, html:{"data-ajax"=>"false"} do |f| %>
+	<div class="action", style="margin: 0.5em 0 1.2em 0;">
+	  <%= f.label :title, "Reason", "style"=>"margin: 0em; font-size: 0.8em; text-align: center; font-weight: bold;"%>
+		<%= f.text_area :title, "style"=>"font-size: 0.9em;" %>
+	</div>
+
+	<div class="action">
+		<%= f.label :content, "Sources & Additional Info", "style"=>"margin: 0em; font-size: 0.8em; text-align: center; font-weight: bold;"%>
+	  <%= f.text_area :content, "style"=>"font-size: 0.9em;" %>
+	</div>
+
+	<div class="ui-grid-b">
+		<div class="ui-block-a"></div>
+		<div class="ui-block-b">
+			<div class="actions", style="margin: 0.7em -0.5em 0.7em -0.5em">
+		    <%= f.submit "Submit All", "data-theme"=>"b", "data-mini"=>"true"%>
+		  </div>
+		</div>
+	</div>
+<% end %>

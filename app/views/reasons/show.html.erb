@@ -1,24 +1,23 @@
 <div class="ui-grid-b"> 
 	<div class="ui-block-a">
 		<div style="margin: 0 -1em 0 0">
-			<%= link_to("Back", @topic, "data-role" => "button", "data-theme"=>"e", "data-icon"=>"back", "data-mini"=>"true")%>
+			<%= link_to("Back", "#", "data-role" => "button", "data-theme"=>"e", "data-icon"=>"back", "data-mini"=>"true", "data-rel"=>"back")%>
 		</div>
 	</div>
 	<div class="ui-block-b"></div>
 	<div class="ui-block-c">
 		<div style="margin: 0 0 0.6em -1em">
-			<%= link_to("Edit", @topic, "data-role" => "button", "data-theme"=>"c", "data-icon"=>"gear", "data-mini"=>"true", "data-iconpos"=>"right")%>
+			<%= link_to("Edit", edit_reason_path(@reason), "data-role" => "button", "data-theme"=>"c", "data-icon"=>"gear", "data-mini"=>"true", "data-iconpos"=>"right")%>
 		</div>
 	</div>
 </div>
 
-<div data-role="header" data-theme="c" style="white-space: normal; min-height: 1em;
-	padding: 0.3em 0.3em 0.3em 0.3em">	
-	<p style="margin:0; text-align: center; line-height:135%; font-size: 0.9em;"><%=@reason.title%></p>
-</div>
-
+<ul data-role="listview" data-theme="c" style="white-space: normal; margin: 0 -0.8em 0 -0.8em;">
+	<li style="text-align: center;">
+		<div style="margin: -0.3em 0 -0.3em 0;"><%=@reason.title %></div>
+	</li>
+</ul>
 
 <div>
 	<p style="margin:0.5em 0.2em 0 0.3em; line-height: 125%; font-size: 0.9em;"> <%=@reason.content%> </p>
 </div>
-

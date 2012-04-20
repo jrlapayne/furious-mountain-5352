@@ -29,12 +29,22 @@
 
 	<div data-role="content">
 		<ul data-role="listview">
+			<% iter = 0 %>
 			<% @pros.each do |i|%>
-				<li>
-					<%= link_to(i, :style=>"white-space: normal; margin: 0 -1.6em 0 -0.8em; font-size: 0.8em;") do %> <%= i.title %>
-						<span class="ui-li-count"><%=i.score%></span>
-					<% end %>
-				</li>
+				<% if iter % 2 == 0 %>	
+					<li>
+						<%= link_to(i, :style=>"white-space: normal; margin: 0 -1.6em 0 -0.8em; font-size: 0.8em;") do %> <%= i.title %>
+							<span class="ui-li-count"><%=i.score%></span>
+						<% end %>
+					</li>
+				<% else %>
+					<li>
+						<%= link_to(i, :style=>"white-space: normal; margin: 0 -1.6em 0 -0.8em; font-size: 0.8em; color: #707070;") do %> <%= i.title %>
+							<span class="ui-li-count"><%=i.score%></span>
+						<% end %>
+					</li>
+				<% end %>
+				<% iter += 1%>
 			<% end %>
 		</ul>
 	</div>
@@ -80,12 +90,22 @@
 
 	<div data-role="content">
 		<ul data-role="listview">
+			<% iter = 0 %>
 			<% @cons.each do |i|%>
-				<li>
-					<%= link_to(i, :style=>"white-space: normal; margin: 0 -1.6em 0 -0.8em; font-size: 0.8em;") do %> <%= i.title %>
-						<span class="ui-li-count"><%=i.score%></span>
-					<% end %>
-				</li>
+				<% if iter % 2 == 0 %>	
+					<li>
+						<%= link_to(i, :style=>"white-space: normal; margin: 0 -1.6em 0 -0.8em; font-size: 0.8em;") do %> <%= i.title %>
+							<span class="ui-li-count"><%=i.score%></span>
+						<% end %>
+					</li>
+				<% else %>
+					<li>
+						<%= link_to(i, :style=>"white-space: normal; margin: 0 -1.6em 0 -0.8em; font-size: 0.8em; color: #707070;") do %> <%= i.title %>
+							<span class="ui-li-count"><%=i.score%></span>
+						<% end %>
+					</li>
+				<% end %>
+				<% iter += 1%>
 			<% end %>
 		</ul>
 	</div>
@@ -111,14 +131,33 @@
 	<%= form_for @newpro, html:{"data-ajax"=>"false"} do |f| %>
 		<%= f.hidden_field :t_id, value: @topic.id %>
 		<%= f.hidden_field :is_pro, value: true %>
+		<%= f.hidden_field :question_approved, value: true%>
 	  <div class="field", style="margin: 0 0 -1em 0;">
-	    <%= f.text_area :title, "placeholder"=>"Add a 'Pro' reason for the topic!"%></br>
+	    <%= f.text_area :title, "placeholder"=>"Add a 'Pro' reason to the topic!"%></br>
 	  </div>
 		<div data-role="collapsible">
-	  	<h2>Optional: Sources/Additional Info</h2>
+	  	<h2><span style="font-size: 0.9em; color: #3059AC;">Optional:</span><span style="font-size: 0.9em;"> Sources/Additional Info</span></h2>
 			<p style="font-size: 0.9em; margin: -0.2em 0 0.8em 0; line-height: 125%">Cite your sources here, or at least provide more information about your post.</p>
-	  	<div class="field", style="margin: 0 0 -1em 0">
+	  	<div class="field", style="margin: 0 0 -0.8em 0">
 		    <%= f.text_area :content %>
+		  </div>
+		</div>
+		<div data-role="collapsible">
+			<h2><span style="font-size: 0.9em; color: #3059AC;">Optional:</span><span style="font-size: 0.9em;"> Create the Quiz Question</span></h2>
+			<div class="field", style="margin: 0 0 -1em 0;">
+		    <%= f.text_area :question, "placeholder"=>"Type quiz question here..."%></br>
+		  </div>
+			<div class="field", style="margin: 0 0 -1em 0;">
+		    <%= f.text_field :correct_answer, "placeholder"=>"Correct Answer ..."%></br>
+		  </div>
+			<div class="field", style="margin: 0 0 -1em 0;">
+		    <%= f.text_field :wrong_answer1, "placeholder"=>"Wrong Answer 1 ..."%></br>
+		  </div>
+			<div class="field", style="margin: 0 0 -1em 0;">
+		    <%= f.text_field :wrong_answer2, "placeholder"=>"Wrong Answer 2 ..."%></br>
+		  </div>
+			<div class="field", style="margin: 0 0 -1em 0;">
+		    <%= f.text_field :wrong_answer3, "placeholder"=>"Wrong Answer 3 ..."%></br>
 		  </div>
 		</div>
 
@@ -130,7 +169,6 @@
 			  </div>
 			</div>
 		</div>	
-
 	<% end %>
 </div>
 
@@ -145,14 +183,33 @@
 	<%= form_for @newcon, html:{"data-ajax"=>"false"} do |f| %>
 		<%= f.hidden_field :t_id, value: @topic.id %>
 		<%= f.hidden_field :is_pro, value: false %>
+		<%= f.hidden_field :question_approved, value: true%>
 	  <div class="field", style="margin: 0 0 -1em 0;">
-	    <%= f.text_area :title, "placeholder"=>"Add a 'Con' reason for the topic!"%></br>
+	    <%= f.text_area :title, "placeholder"=>"Add a 'Con' reason to the topic!"%></br>
 	  </div>
 		<div data-role="collapsible">
-	  	<h2>Optional: Sources/Additional Info</h2>
+	  	<h2><span style="font-size: 0.9em; color: #3059AC;">Optional:</span><span style="font-size: 0.9em;"> Sources/Additional Info</span></h2>
 			<p style="font-size: 0.9em; margin: -0.2em 0 0.8em 0; line-height: 125%">Cite your sources here, or at least provide more information about your post.</p>
-	  	<div class="field", style="margin: 0 0 -1em 0">
+	  	<div class="field", style="margin: 0 0 -0.8em 0">
 		    <%= f.text_area :content %>
+		  </div>
+		</div>
+		<div data-role="collapsible">
+			<h2><span style="font-size: 0.9em; color: #3059AC;">Optional:</span><span style="font-size: 0.9em;"> Create the Quiz Question</span></h2>
+			<div class="field", style="margin: 0 0 -1em 0;">
+		    <%= f.text_area :question, "placeholder"=>"Type quiz question here..."%></br>
+		  </div>
+			<div class="field", style="margin: 0 0 -1em 0;">
+		    <%= f.text_field :correct_answer, "placeholder"=>"Correct Answer ..."%></br>
+		  </div>
+			<div class="field", style="margin: 0 0 -1em 0;">
+		    <%= f.text_field :wrong_answer1, "placeholder"=>"Wrong Answer 1 ..."%></br>
+		  </div>
+			<div class="field", style="margin: 0 0 -1em 0;">
+		    <%= f.text_field :wrong_answer2, "placeholder"=>"Wrong Answer 2 ..."%></br>
+		  </div>
+			<div class="field", style="margin: 0 0 -1em 0;">
+		    <%= f.text_field :wrong_answer3, "placeholder"=>"Wrong Answer 3 ..."%></br>
 		  </div>
 		</div>
 
@@ -164,6 +221,5 @@
 			  </div>
 			</div>
 		</div>	
-
 	<% end %>
 </div>

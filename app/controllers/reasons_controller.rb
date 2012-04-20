@@ -13,6 +13,19 @@ class ReasonsController < ApplicationController
     redirect_to T.find_by_id(reason.t_id)
   end
   
+  def edit
+    @reason = Reason.find_by_id(params[:id])
+    @topic = T.find_by_id(@reason.t_id)
+  end
+  
+  def update
+    @reason = Reason.find_by_id(params[:id])
+    @reason.update_attributes(params[:reason])
+    @topic = T.find_by_id(@reason.t_id)
+    
+    redirect_to @topic
+  end
+  
   def showquestion
       
     @reason = Reason.find_by_id(params[:id])
