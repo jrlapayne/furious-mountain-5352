@@ -2,20 +2,20 @@ class ReasonsController < ApplicationController
   
   def show
     @reason = Reason.find_by_id(params[:id])
-    @topic = T.find_by_id(@reason.topic_id)
+    @topic = T.find_by_id(@reason.t_id)
   end
   
   def showquestion
       
     @reason = Reason.find_by_id(params[:id])
-    @topic = T.find_by_id(@reason.topic_id)
+    @topic = T.find_by_id(@reason.t_id)
     @quizactivity = Quizactivity.new
   end
   
   def correct
     reason = Reason.find_by_id(params[:id])
-    @quizactivity = Quizactivity.create(topic_id: reason.topic_id, reason_id: reason.id, is_correct: true)
-    reasons = Reason.where(topic_id: @quizactivity.topic_id, question_approved: true)
+    @quizactivity = Quizactivity.create(t_id: reason.t_id, reason_id: reason.id, is_correct: true)
+    reasons = Reason.where(t_id: @quizactivity.topic_id, question_approved: true)
     
     i = -1
     while i < reasons.count
@@ -32,8 +32,8 @@ class ReasonsController < ApplicationController
   
   def wrong
     reason = Reason.find_by_id(params[:id])
-    @quizactivity = Quizactivity.create(topic_id: reason.topic_id, reason_id: reason.id, is_correct: false)
-    reasons = Reason.where(topic_id: @quizactivity.topic_id, question_approved: true)
+    @quizactivity = Quizactivity.create(t_id: reason.topic_id, reason_id: reason.id, is_correct: false)
+    reasons = Reason.where(t_id: @quizactivity.topic_id, question_approved: true)
     
     i = -1
     while i < reasons.count
@@ -55,7 +55,7 @@ class ReasonsController < ApplicationController
     reason.score = Scoring.where(reason_id: reason.id).sum(:vote)
     reason.save
     
-    topic = T.find_by_id(reason.topic_id)
+    topic = T.find_by_id(reason.t_id)
     if reason.is_pro?
       redirect_to votepros_t_path(topic)
     else
@@ -70,7 +70,7 @@ class ReasonsController < ApplicationController
     reason.score = Scoring.where(reason_id: reason.id).sum(:vote)
     reason.save
     
-    topic = T.find_by_id(reason.topic_id)
+    topic = T.find_by_id(reason.t_id)
     if reason.is_pro?
       redirect_to votepros_t_path(topic)
     else

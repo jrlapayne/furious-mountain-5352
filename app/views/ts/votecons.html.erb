@@ -1,11 +1,16 @@
-<%= link_to("Finished Voting", @topic, "data-role" => "button", "data-icon"=>"back", "data-iconpos"=>"left", "data-theme"=>"e", "data-mini"=>"true", "data-ajax"=>"false")%>
+<div class="ui-grid-b">
+	<div class="ui-block-a"></div>
+	<div class="ui-block-b">
+		<div style="margin: 0.7em -2.5em 0.7em -2.5em"><%= link_to("Done Voting", @topic, "data-role" => "button", "data-theme"=>"e", "data-mini"=>"true", "data-ajax"=>"false")%></div>
+	</div>
+</div>
 
 <div class="ui-grid-a">
 	<div class="ui-block-a">
-		<%= link_to("Pros", votepros_t_path(@topic), "data-role" => "button")%>
+		<div style="margin: 0 3.5em 0 0"><%= link_to("Pros", votepros_t_path(@topic), "data-role" => "button", "data-mini"=>"true", "data-transition"=>"flip")%></div>
 	</div>
 	<div class="ui-block-b">
-		<%= link_to("Cons", "#", "data-role" => "button", "data-icon"=>"arrow-d", "data-iconpos"=>"left", "data-theme"=>"b")%>
+		<div style="margin: 0 0 0 -3.5em"><%= link_to("Cons", "#", "data-role" => "button", "data-icon"=>"arrow-d", "data-iconpos"=>"left", "data-mini"=>"true","data-theme"=>"b")%></div>	
 	</div>
 </div>
 
@@ -13,12 +18,12 @@
 	<ul data-role="listview">
 		<% @cons.each do |i|%>
 			<li>
-				<%= link_to(i, :style=>"white-space: normal; margin: 0 0 -0.7em -0.8em; font-size: 0.9em;") do %>
+				<%= link_to(i, :style=>"white-space: normal; margin: 0 0em -0.7em -0.8em; font-size: 0.9em;") do %>
 					<%= i.title %>
 					<span class="ui-li-count", style="font-size: 1.4em"><%=i.score%></span>
 				<% end %>
 			</li>
-			<div class="ui-grid-c", style="margin: 0.2em 0 0.5em 0;">
+			<div class="ui-grid-c", style="margin: -0.4em 0 0 0;">
 				<div class="ui-block-a"></div>
 				<div class="ui-block-b">
 					<%= link_to "+", upvote_reason_path(i), {"data-role"=>"button", "style"=>"color: #198219"}%>

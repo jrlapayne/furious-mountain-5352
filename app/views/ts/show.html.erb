@@ -9,7 +9,7 @@
 
 	<ul data-role="listview" data-split-icon="info" data-split-theme="c">
 		<li>
-			<a href="#"><p style="margin: 0 -3.3em -0.5em -0.8em; text-align: center; line-height:135%; font-size: 0.95em; font-weight: bold; white-space: normal;"><%= @topic.title %></p></a>
+			<a href="#"><p style="margin: -0.3em -3.3em -0.5em -0.8em; text-align: center; line-height:135%; font-size: 0.95em; font-weight: bold; white-space: normal;"><%= @topic.title %></p></a>
 			<%= link_to "Topic Description", description_t_path(@topic), {"data-icon"=>"info", "data-iconpos"=>"notext", "data-theme"=>"e", "data-transition"=>"slidedown", "class"=>"ui-btn-right" }%>
 		</li>
 	</ul>
@@ -37,7 +37,7 @@
 </div>
 
 <div data-role="page" id="cons">
-	<div data-role="navbar" data-iconpos="left" style="background-color:#303030">
+	<div data-role="navbar" data-iconpos="right" style="background-color:#303030">
 		<ul>
 			<li><%= link_to "Home", ts_path, {"data-role"=>"button", "data-mini"=>"true", "data-icon"=>"home", "data-theme"=>"a"}%></li>
 			<li><a href="#votingviewcons" data-role="button", data-icon="gear", data-theme="a", data-mini="true", style="color: #ffd700;"> Vote! </a></li>
@@ -47,7 +47,7 @@
 
 	<ul data-role="listview" data-split-icon="info" data-split-theme="c">
 		<li>
-			<a href="#"><p style="margin: 0 -3.3em -0.5em -0.8em; text-align: center; line-height:135%; font-size: 0.95em; font-weight: bold; white-space: normal;"><%= @topic.title %></p></a>
+			<a href="#"><p style="margin: -0.3em -3.3em -0.5em -0.8em; text-align: center; line-height:135%; font-size: 0.95em; font-weight: bold; white-space: normal;"><%= @topic.title %></p></a>
 			<%= link_to "Topic Description", description_t_path(@topic), {"data-icon"=>"info", "data-iconpos"=>"notext", "data-theme"=>"e", "data-transition"=>"slidedown", "class"=>"ui-btn-right" }%>
 		</li>
 	</ul>
@@ -75,11 +75,20 @@
 </div>
 
 <div data-role="page" id="votingviewpros">
-	<%= link_to("Finished Voting", "#pros", "data-role" => "button", "data-icon"=>"back", "data-iconpos"=>"left", "data-theme"=>"e", "data-mini"=>"true")%>
+	<div class="ui-grid-b">
+		<div class="ui-block-a"></div>
+		<div class="ui-block-b">
+			<div style="margin: 0.7em -2.5em 0.7em -2.5em"><%= link_to("Done Voting", "#pros", "data-role" => "button", "data-theme"=>"e", "data-mini"=>"true")%></div>
+		</div>
+	</div>
 
 	<div class="ui-grid-a">
-		<div class="ui-block-a"><a href="#" data-role="button", data-icon="arrow-d", data-theme="b", data-iconpos="right", data-mini="true"> Pros </a></div>
-		<div class="ui-block-b"><a href="#cons" data-role="button", data-theme="c", data-transition="flip", data-mini="true"> Cons </a></div>
+		<div class="ui-block-a">
+			<div style="margin: 0 -3.5em 0 0"><%= link_to("Pros", "#", "data-role" => "button", "data-icon"=>"arrow-d", "data-iconpos"=>"right", "data-mini"=>"true","data-theme"=>"b")%></div>
+		</div>
+		<div class="ui-block-b">
+			<div style="margin: 0 0 0 3.5em"><%= link_to("Cons", "#votingviewcons", "data-role" => "button", "data-mini"=>"true", "data-transition"=>"flip")%></div>
+		</div>
 	</div>
 
 	<div data-role="content">
@@ -91,7 +100,7 @@
 						<span class="ui-li-count", style="font-size: 1.4em"><%=i.score%></span>
 					<% end %>
 				</li>
-				<div class="ui-grid-c", style="margin: -0.4em 0 0.5em 0;">
+				<div class="ui-grid-c", style="margin: -0.4em 0 0 0;">
 					<div class="ui-block-a"></div>
 					<div class="ui-block-b">
 						<%= link_to "+", upvote_reason_path(i), {"data-role"=>"button", "style"=>"color: #198219"}%>
@@ -106,11 +115,20 @@
 </div>
 
 <div data-role="page" id="votingviewcons">
-	<%= link_to("Finished Voting", "#pros", "data-role" => "button", "data-icon"=>"back", "data-iconpos"=>"left", "data-theme"=>"e", "data-mini"=>"true")%>
+	<div class="ui-grid-b">
+		<div class="ui-block-a"></div>
+		<div class="ui-block-b">
+			<div style="margin: 0.7em -2.5em 0.7em -2.5em"><%= link_to("Done Voting", "#pros", "data-role" => "button", "data-theme"=>"e", "data-mini"=>"true")%></div>
+		</div>
+	</div>
 
 	<div class="ui-grid-a">
-		<div class="ui-block-a"><a href="#pros" data-role="button", data-theme="c", data-transition="flip", data-mini="true"> Pros </a></div>
-		<div class="ui-block-b"><a href="#" data-role="button", data-icon="arrow-d", data-theme="b", data-iconpos="left", data-mini="true"> Cons </a></div>
+		<div class="ui-block-a">
+			<div style="margin: 0 3.5em 0 0"><%= link_to("Pros", "#votingviewpros", "data-role" => "button", "data-mini"=>"true", "data-transition"=>"flip")%></div>
+		</div>
+		<div class="ui-block-b">
+			<div style="margin: 0 0 0 -3.5em"><%= link_to("Cons", "#", "data-role" => "button", "data-icon"=>"arrow-d", "data-iconpos"=>"left", "data-mini"=>"true","data-theme"=>"b")%></div>	
+		</div>
 	</div>
 
 	<div data-role="content">
@@ -122,7 +140,7 @@
 						<span class="ui-li-count", style="font-size: 1.4em"><%=i.score%></span>
 					<% end %>
 				</li>
-				<div class="ui-grid-c", style="margin: -0.4em 0 0.5em 0;">
+				<div class="ui-grid-c", style="margin: -0.4em 0 0 0;">
 					<div class="ui-block-a"></div>
 					<div class="ui-block-b">
 						<%= link_to "+", upvote_reason_path(i), {"data-role"=>"button", "style"=>"color: #198219"}%>

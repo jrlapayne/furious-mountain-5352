@@ -5,16 +5,19 @@ class TsController < ApplicationController
   end
   
   def new
-    @title = "New Topic"
     @topic = T.new
   end
   
+  def edit
+    @topic = T.find_by_id(params[:id])
+  end
+  
   def create
-    @topic = T.new(params[:topic])
+    @topic = T.new(params[:t])
 
     respond_to do |format|
       if @topic.save
-        format.html { redirect_to topics_path, notice: 'Topic was successfully created.' }
+        format.html { redirect_to ts_path, notice: 'Topic was successfully created.' }
         format.json { render json: @topic, status: :created, location: @topic }
       else
         format.html { render action: "new" }
@@ -25,11 +28,11 @@ class TsController < ApplicationController
   
   def show
     @topic = T.find_by_id(params[:id])
-    reasons = Reason.where(topic_id: @topic.id, question_approved: true)
+    reasons = Reason.where(t_id: @topic.id, question_approved: true)
     @reason = reasons.first
     
-    @pros = Reason.where(topic_id: @topic.id, is_pro: true)
-    @cons = Reason.where(topic_id: @topic.id, is_pro: false)
+    @pros = Reason.where(t_id: @topic.id, is_pro: true)
+    @cons = Reason.where(t_id: @topic.id, is_pro: false)
     
     unless @pros.empty?
       @pros.sort! { |a,b| a.score <=> b.score}
@@ -48,7 +51,7 @@ class TsController < ApplicationController
   
   def votepros
     @topic = T.find_by_id(params[:id])
-    @pros = Reason.where(topic_id: @topic.id, is_pro: true)
+    @pros = Reason.where(t_id: @topic.id, is_pro: true)
     
     unless @pros.empty?
       @pros.sort! { |a,b| a.score <=> b.score}
@@ -58,7 +61,7 @@ class TsController < ApplicationController
   
   def votecons
     @topic = T.find_by_id(params[:id])
-    @cons = Reason.where(topic_id: @topic.id, is_pro: false)
+    @cons = Reason.where(t_id: @topic.id, is_pro: false)
     
     unless @cons.empty?
       @cons.sort! { |a,b| a.score <=> b.score}

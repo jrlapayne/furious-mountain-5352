@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120419051035) do
+ActiveRecord::Schema.define(:version => 20120420012154) do
 
   create_table "answers", :force => true do |t|
     t.string   "content"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(:version => 20120419051035) do
   end
 
   create_table "quizactivities", :force => true do |t|
-    t.integer  "topic_id"
+    t.integer  "t_id"
     t.integer  "user_id"
     t.integer  "reason_id"
     t.boolean  "is_correct"
@@ -31,13 +31,13 @@ ActiveRecord::Schema.define(:version => 20120419051035) do
   end
 
   create_table "quizzes", :force => true do |t|
-    t.integer  "topic_id"
+    t.integer  "t_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   create_table "reasons", :force => true do |t|
-    t.integer  "topic_id"
+    t.integer  "t_id"
     t.string   "question"
     t.boolean  "question_approved"
     t.string   "title"

@@ -5,8 +5,8 @@ class QuizzesController < ApplicationController
       "eighteen", "nineteen", "twenty"]
     
     quiz = Quiz.find_by_id(params[:id])
-    @topic = T.find_by_id(quiz.topic_id)
-    reasons = Reason.where(topic_id: @topic.id, question_approved: true)
+    @topic = T.find_by_id(quiz.t_id)
+    reasons = Reason.where(t_id: @topic.id, question_approved: true)
     @reason = reasons.first
     @quizactivity = Quizactivity.new
   end

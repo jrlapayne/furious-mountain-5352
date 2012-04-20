@@ -1,0 +1,16 @@
+<div class="ui-grid-b">
+	<div class="ui-block-a">
+		<div style="margin: 0.8em 0 0.8em 0;"><%= link_to("Back", "#", "data-role" => "button", "data-theme"=>"e", "data-icon"=>"back", "data-mini"=>"true", "data-rel"=>"back")%></div>
+	</div>
+</div>
+
+<%= form_for @topic do |f| %>
+  <div class="action">
+    <%= f.text_area :title %>
+  </div>
+
+  <div class="submitedit">	   
+		<%= f.submit "Submit Edit", "data-mini"=>"true"%>	
+  </div>
+
+<% end %>
