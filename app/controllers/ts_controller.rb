@@ -12,6 +12,13 @@ class TsController < ApplicationController
     @topic = T.find_by_id(params[:id])
   end
   
+  def update
+    @topic = T.find_by_id(params[:id])
+    @topic.update_attributes(params[:t])
+    
+    redirect_to @topic
+  end
+  
   def create
     @topic = T.new(params[:t])
 
@@ -43,6 +50,9 @@ class TsController < ApplicationController
       @cons.sort! { |a,b| a.score <=> b.score}
       @cons.reverse!
     end
+    
+    @newpro = Reason.new
+    @newcon = Reason.new
   end
   
   def description

@@ -1,8 +1,12 @@
-<div data-role="page" id="pros">
+<div data-role="page" id="pros" data-url="/ts/<%=@topic.id%>">
 	<div data-role="navbar" data-iconpos="right" style="background-color:#303030;">
 		<ul>
 			<li><%= link_to "Home", ts_path, {"data-role"=>"button", "data-mini"=>"true", "data-icon"=>"home", "data-theme"=>"a"}%></li>
-			<li><a href="#votingviewpros" data-role="button", data-icon="gear", data-theme="a", data-mini="true", style="color: #ffd700;"> Vote! </a></li>
+			<li>
+				<%= link_to(votepros_t_path(@topic), {"data-ajax"=>"false", "data-theme"=>"a", "data-icon"=>"gear", "data-role"=>"button", "style"=>"color: #ffd700;"}) do%>
+				<span style="color: #ffd700;">Vote! </span>
+				<% end %>
+			</li>
 			<li><%= link_to "Quiz!", showquestion_reason_path(@reason), {"data-ajax"=>"false", "data-role"=>"button", "data-mini"=>"true", "data-icon"=>"check", "data-theme"=>"a"}%></li>
 		</ul>
 	</div>
@@ -34,13 +38,26 @@
 			<% end %>
 		</ul>
 	</div>
+	
+	<div class="ui-grid-a">
+		<div class="ui-block-a"></div>
+		<div class="ui-block-b">
+			<div style="margin: 0.7em 0 0 0">
+		    <a href="#addnewpro" data-role="button", data-theme="c", data-mini="true", data-icon="plus" data-transition="flip"> Add a <span style="color: #335CD6;"> Pro</span>!</a>
+		  </div>
+		</div>
+	</div>
 </div>
 
 <div data-role="page" id="cons">
 	<div data-role="navbar" data-iconpos="right" style="background-color:#303030">
 		<ul>
 			<li><%= link_to "Home", ts_path, {"data-role"=>"button", "data-mini"=>"true", "data-icon"=>"home", "data-theme"=>"a"}%></li>
-			<li><a href="#votingviewcons" data-role="button", data-icon="gear", data-theme="a", data-mini="true", style="color: #ffd700;"> Vote! </a></li>
+			<li>
+				<%= link_to(votecons_t_path(@topic), {"data-ajax"=>"false", "data-theme"=>"a", "data-icon"=>"gear", "data-role"=>"button", "style"=>"color: #ffd700;"}) do%>
+				<span style="color: #ffd700;">Vote! </span>
+				<% end %>
+			</li>
 			<li><%= link_to "Quiz!", showquestion_reason_path(@reason), {"data-ajax"=>"false", "data-role"=>"button", "data-mini"=>"true", "data-icon"=>"check", "data-theme"=>"a"}%></li>
 		</ul>
 	</div>
@@ -72,84 +89,81 @@
 			<% end %>
 		</ul>
 	</div>
-</div>
-
-<div data-role="page" id="votingviewpros">
-	<div class="ui-grid-b">
+	
+	<div class="ui-grid-a">
 		<div class="ui-block-a"></div>
 		<div class="ui-block-b">
-			<div style="margin: 0.7em -2.5em 0.7em -2.5em"><%= link_to("Done Voting", "#pros", "data-role" => "button", "data-theme"=>"e", "data-mini"=>"true")%></div>
+			<div style="margin: 0.7em 0 0 0">
+		    <a href="#addnewcon" data-role="button", data-theme="c", data-mini="true", data-icon="plus" data-transition="flip"> Add a <span style="color: #335CD6;"> Con</span>!</a>
+		  </div>
 		</div>
-	</div>
-
-	<div class="ui-grid-a">
-		<div class="ui-block-a">
-			<div style="margin: 0 -3.5em 0 0"><%= link_to("Pros", "#", "data-role" => "button", "data-icon"=>"arrow-d", "data-iconpos"=>"right", "data-mini"=>"true","data-theme"=>"b")%></div>
-		</div>
-		<div class="ui-block-b">
-			<div style="margin: 0 0 0 3.5em"><%= link_to("Cons", "#votingviewcons", "data-role" => "button", "data-mini"=>"true", "data-transition"=>"flip")%></div>
-		</div>
-	</div>
-
-	<div data-role="content">
-		<ul data-role="listview">
-			<% @pros.each do |i|%>
-				<li>
-					<%= link_to(i, :style=>"white-space: normal; margin: 0 0em -0.7em -0.8em; font-size: 0.9em;") do %>
-						<%= i.title %>
-						<span class="ui-li-count", style="font-size: 1.4em"><%=i.score%></span>
-					<% end %>
-				</li>
-				<div class="ui-grid-c", style="margin: -0.4em 0 0 0;">
-					<div class="ui-block-a"></div>
-					<div class="ui-block-b">
-						<%= link_to "+", upvote_reason_path(i), {"data-role"=>"button", "style"=>"color: #198219"}%>
-					</div>
-					<div class="ui-block-c">
-						<%= link_to '&#8722;'.html_safe, downvote_reason_path(i), {"data-role"=>"button", "style"=>"color: #e60000"}%>
-					</div>
-				</div>
-			<% end %>		
-		</ul>
 	</div>
 </div>
 
-<div data-role="page" id="votingviewcons">
+<div data-role="page" id="addnewpro">
 	<div class="ui-grid-b">
 		<div class="ui-block-a"></div>
 		<div class="ui-block-b">
-			<div style="margin: 0.7em -2.5em 0.7em -2.5em"><%= link_to("Done Voting", "#pros", "data-role" => "button", "data-theme"=>"e", "data-mini"=>"true")%></div>
+			<div style="margin: 0.7em -2.5em 0.7em -2.5em"><%= link_to("Back", "#", "data-role" => "button", "data-theme"=>"e", "data-icon"=>"back", "data-rel"=>"back")%></div>
 		</div>
 	</div>
 
-	<div class="ui-grid-a">
-		<div class="ui-block-a">
-			<div style="margin: 0 3.5em 0 0"><%= link_to("Pros", "#votingviewpros", "data-role" => "button", "data-mini"=>"true", "data-transition"=>"flip")%></div>
+	<%= form_for @newpro, html:{"data-ajax"=>"false"} do |f| %>
+		<%= f.hidden_field :t_id, value: @topic.id %>
+		<%= f.hidden_field :is_pro, value: true %>
+	  <div class="field", style="margin: 0 0 -1em 0;">
+	    <%= f.text_area :title, "placeholder"=>"Add a 'Pro' reason for the topic!"%></br>
+	  </div>
+		<div data-role="collapsible">
+	  	<h2>Optional: Sources/Additional Info</h2>
+			<p style="font-size: 0.9em; margin: -0.2em 0 0.8em 0; line-height: 125%">Cite your sources here, or at least provide more information about your post.</p>
+	  	<div class="field", style="margin: 0 0 -1em 0">
+		    <%= f.text_area :content %>
+		  </div>
 		</div>
+
+		<div class="ui-grid-b">
+			<div class="ui-block-a"></div>
+			<div class="ui-block-b">
+				<div class="actions", style="margin: 0.7em -2.5em 0.7em -2.5em">
+			    <%= f.submit "Submit!", "data-theme"=>"b", "data-icon"=>"check"%>
+			  </div>
+			</div>
+		</div>	
+
+	<% end %>
+</div>
+
+<div data-role="page" id="addnewcon">
+	<div class="ui-grid-b">
+		<div class="ui-block-a"></div>
 		<div class="ui-block-b">
-			<div style="margin: 0 0 0 -3.5em"><%= link_to("Cons", "#", "data-role" => "button", "data-icon"=>"arrow-d", "data-iconpos"=>"left", "data-mini"=>"true","data-theme"=>"b")%></div>	
+			<div style="margin: 0.7em -2.5em 0.7em -2.5em"><%= link_to("Back", "#", "data-role" => "button", "data-theme"=>"e", "data-icon"=>"back", "data-rel"=>"back")%></div>
 		</div>
 	</div>
 
-	<div data-role="content">
-		<ul data-role="listview">
-			<% @cons.each do |i|%>
-				<li>
-					<%= link_to(i, :style=>"white-space: normal; margin: 0 0em -0.7em -0.8em; font-size: 0.9em;") do %>
-						<%= i.title %>
-						<span class="ui-li-count", style="font-size: 1.4em"><%=i.score%></span>
-					<% end %>
-				</li>
-				<div class="ui-grid-c", style="margin: -0.4em 0 0 0;">
-					<div class="ui-block-a"></div>
-					<div class="ui-block-b">
-						<%= link_to "+", upvote_reason_path(i), {"data-role"=>"button", "style"=>"color: #198219"}%>
-					</div>
-					<div class="ui-block-c">
-						<%= link_to '&#8722;'.html_safe, downvote_reason_path(i), {"data-role"=>"button", "style"=>"color: #e60000"}%>
-					</div>
-				</div>
-			<% end %>		
-		</ul>
-	</div>
+	<%= form_for @newcon, html:{"data-ajax"=>"false"} do |f| %>
+		<%= f.hidden_field :t_id, value: @topic.id %>
+		<%= f.hidden_field :is_pro, value: false %>
+	  <div class="field", style="margin: 0 0 -1em 0;">
+	    <%= f.text_area :title, "placeholder"=>"Add a 'Con' reason for the topic!"%></br>
+	  </div>
+		<div data-role="collapsible">
+	  	<h2>Optional: Sources/Additional Info</h2>
+			<p style="font-size: 0.9em; margin: -0.2em 0 0.8em 0; line-height: 125%">Cite your sources here, or at least provide more information about your post.</p>
+	  	<div class="field", style="margin: 0 0 -1em 0">
+		    <%= f.text_area :content %>
+		  </div>
+		</div>
+
+		<div class="ui-grid-b">
+			<div class="ui-block-a"></div>
+			<div class="ui-block-b">
+				<div class="actions", style="margin: 0.7em -2.5em 0.7em -2.5em">
+			    <%= f.submit "Submit!", "data-theme"=>"b", "data-icon"=>"check"%>
+			  </div>
+			</div>
+		</div>	
+
+	<% end %>
 </div>

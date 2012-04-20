@@ -5,6 +5,14 @@ class ReasonsController < ApplicationController
     @topic = T.find_by_id(@reason.t_id)
   end
   
+  def create
+    reason = Reason.new(params[:reason])
+    reason.score = 0
+    reason.save
+    
+    redirect_to T.find_by_id(reason.t_id)
+  end
+  
   def showquestion
       
     @reason = Reason.find_by_id(params[:id])
@@ -15,7 +23,7 @@ class ReasonsController < ApplicationController
   def correct
     reason = Reason.find_by_id(params[:id])
     @quizactivity = Quizactivity.create(t_id: reason.t_id, reason_id: reason.id, is_correct: true)
-    reasons = Reason.where(t_id: @quizactivity.topic_id, question_approved: true)
+    reasons = Reason.where(t_id: @quizactivity.t_id, question_approved: true)
     
     i = -1
     while i < reasons.count
@@ -32,8 +40,8 @@ class ReasonsController < ApplicationController
   
   def wrong
     reason = Reason.find_by_id(params[:id])
-    @quizactivity = Quizactivity.create(t_id: reason.topic_id, reason_id: reason.id, is_correct: false)
-    reasons = Reason.where(t_id: @quizactivity.topic_id, question_approved: true)
+    @quizactivity = Quizactivity.create(t_id: reason.t_id, reason_id: reason.id, is_correct: false)
+    reasons = Reason.where(t_id: @quizactivity.t_id, question_approved: true)
     
     i = -1
     while i < reasons.count

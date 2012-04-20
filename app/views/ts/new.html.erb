@@ -7,14 +7,14 @@
 
 <%= form_for(@topic) do |f| %>
 
-  <div class="field">
-    <%= f.text_area :title, "placeholder"=>"Submit a new controversial topic/question! ..."%></br>
+  <div class="field", style="margin: 0 0 -1em 0;">
+    <%= f.text_area :title, "placeholder"=>"Submit a new controversial topic/question!"%></br>
   </div>
 	<div data-role="collapsible">
   	<h2>Optional: Add Description</h2>
-		<p style="font-size: 0.9em; margin: -0.2em 0 0.8em 0; line-spacing: 130%">This is meant to educate users on the relevant background info of your topic.  This will be editable by other users, wiki-style.</p>
-  	<div class="field">
-	    <%= f.text_area :description, "placeholder"=>" Add a brief, objective explanation of your topic ... "%>
+		<p style="font-size: 0.9em; margin: -0.2em 0 0.8em 0; line-height: 125%">This field is meant to educate users about the your topic's relevant background information.  This will be editable by other users, wiki-style.</p>
+  	<div class="field", style="margin: 0 0 -1em 0">
+	    <%= f.text_area :description, "placeholder"=>" Add a brief, objective explanation ... "%>
 	  </div>
 	</div>
 
