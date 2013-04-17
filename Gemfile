@@ -7,6 +7,7 @@ gem 'rails', '3.2.2'
 
 gem 'pg'
 gem 'thin'
+gem 'omniauth-facebook'
 
 
 # Gems used only for assets and not required

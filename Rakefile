@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Mobile4::Application.load_tasks
+Mobile5::Application.load_tasks
